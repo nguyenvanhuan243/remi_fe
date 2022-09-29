@@ -72,7 +72,7 @@ export default class EmploymentItem extends PureComponent {
   handleClickOpen = employeeItemId => {
     this.setState({ open: true });
     const { limit } = this.state;
-    axios.get(`${config.API_BASE_URL}/employees/${employeeItemId}?limit=${limit}`).then(
+    axios.get(`${config.API_URL}/employees/${employeeItemId}?limit=${limit}`).then(
       response => this.setState({ employeeItem: response.data })
     );
   }

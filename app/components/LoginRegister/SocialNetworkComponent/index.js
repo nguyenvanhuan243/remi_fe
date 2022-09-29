@@ -12,7 +12,7 @@ export default class SocialNetworkComponent extends PureComponent { // eslint-di
     e.preventDefault();
     const email = e.currentTarget[0].value;
     const password = e.currentTarget[1].value;
-    const url = `${config.API_BASE_URL}/sessions`;
+    const url = `${config.API_URL}/sessions`;
     axios.post(url, {
       user: {
         email,
@@ -32,7 +32,7 @@ export default class SocialNetworkComponent extends PureComponent { // eslint-di
     e.preventDefault();
     const email = e.currentTarget[0].value;
     const password = e.currentTarget[1].value;
-    const urlSignup = `${config.API_BASE_URL}/users`;
+    const urlSignup = `${config.API_URL}/users`;
     axios.post(urlSignup, {
       user: {
         email,

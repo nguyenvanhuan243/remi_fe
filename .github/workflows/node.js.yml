@@ -1,0 +1,27 @@
+name: DEPLOY EXCHANGE WITH RENDER SERVER
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Deploy to Render
+        run: |
+          curl -X GET "https://api.render.com/deploy/srv-cku6fq6b0mos73ferjpg?key=-VoInxzVS-c"

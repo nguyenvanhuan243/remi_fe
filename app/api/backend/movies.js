@@ -2,11 +2,16 @@ import axios from 'axios';
 import config from '../../../config';
 
 const MovieAPI = {
-  getMovies: () => {
-    return axios.get(`${config.API_BASE_URL}/movies`);
+
+  // Get movies
+  getMovies: (title) => {
+    if (title) return axios.get(`${config.API_URL}/movies?title=${title}`);
+    return axios.get(`${config.API_URL}/movies`);
   },
+
+  // Create movies
   create: (params, accessToken) => {
-    const requestUrl = `${config.API_BASE_URL}/movies`;
+    const requestUrl = `${config.API_URL}/movies`;
     const authOptions = {
       headers: {
         Authorization: accessToken,

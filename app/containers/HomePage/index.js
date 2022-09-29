@@ -3,14 +3,15 @@ import Header from 'components/Header/Loadable';
 import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies'; 
-import { toUpper } from 'lodash'
+import UserAPI from '../../api/backend/users'; 
 import Button from '@material-ui/core/Button';
-export default function HomePage(messages) {
+import UserUtils from '../../utils/user/UserUtils';
+export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
-  const [jobTitleList, setJobTitleList] = useState([])
-  const [movieList, setMovieList] = useState(true)
-  const [jobList, setJobList] = useState(true)
+  const [movieList, setMovieList] = useState({})
   const [isSearching, setIsSearching] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
+  const [currentSearchSelected, setCurrentSearchSelected] = useState(null)
 
   useEffect(() => {
     MovieAPI.getMovies().then(
@@ -19,68 +20,51 @@ export default function HomePage(messages) {
         setTimeout(() => setIsLoading(false), 1000);
       }
     );
+    UserAPI.getUserByAccessToken(UserUtils.getAccessToken()).then(res => setCurrentUser(res.data))
   }, [])
 
-  const searchJobByTitle = title => {
+  const searchMovieByTitle = title => {
     setIsLoading(true)
     setIsSearching(true)
-    MovieAPI.getMovies().then(res => {
+    setCurrentSearchSelected(title)
+    title = title === 'ALL' ? null : title
+    MovieAPI.getMovies(title).then(res => {
       setTimeout(() => {
         setIsLoading(false)
         setIsSearching(false)
       }, 1000);
-      setJobList(res.data)
+      setMovieList(res.data)
     })
-  }
-
-  const countJobByTitle = item => {
-    let titleDeletedSpace = 0
-    if (item === 'ALL') { return jobTitleList.length }
-    const normalTitle = jobTitleList.filter(job => toUpper(job.title).includes(toUpper(item))).length
-    if (item.includes(' ')) {
-      titleDeletedSpace = jobTitleList.filter(job => toUpper(job.title).includes(toUpper(item.split(" ").join("")))).length
-    }
-    return normalTitle + titleDeletedSpace
   }
   
   const renderSearchButton = () => {
     const titleList = [
-      'Nhạc',
-      'Phim',
+      'ALL',
+      'Music',
+      'Smart Contract',
       'Guitar',
       'Piano',
       'Game',
       'Blockchain',
       'Code',
-      'Music',
       'Trading',
       'Remitano'
     ]
     return (
       <div className='SearchBoxContainer'>
-        {
-          titleList.map((item, i) => {
-            return (
-              <Button onClick={() => searchJobByTitle(item)} className='custom-button' variant='contained' color={ i % 2 === 0 ? 'success' : 'primary' }>
-                { isSearching && <span className="spinner-border spinner-border-sm mr-1"></span> }
-                { item } ({ countJobByTitle(item) })
-              </Button>
-            )
-          })
+        { titleList.map((item, i) => {
+          return (
+            <Button onClick={() => searchMovieByTitle(item)} className='custom-button' variant='contained' color={ i % 2 === 0 ? 'success' : 'primary' }>
+              { isSearching && currentSearchSelected === item && <span className="spinner-border spinner-border-sm mr-1"></span> }
+              { item }
+            </Button>)})
         }
-      </div>
-    )
+      </div>)
   }
 
   return (
     <div className="HomePage">
-      <Header
-        postJobText={messages['header.postJob']}
-        findJobText={messages['header.findJob']}
-        findPeopleText={messages['header.findPeople']}
-        loginText={messages['header.loginText']}
-        signupText={messages['header.signupText']}
-      />
+      <Header />
       <div className="HomePage-container">
         { renderSearchButton() }
         { isLoading ?
@@ -98,6 +82,11 @@ export default function HomePage(messages) {
                     description={item.description}
                     sharedByEmail={item.shared_by}
                     embedUrl={item.embed_url}
+                    movieID={item.id}
+                    totalLikes={item.total_likes}
+                    totalDisLikes={item.total_dislikes}
+                    currentUser={currentUser}
+                    likeList={item.like_list}
                   />
                 </div>))
             }

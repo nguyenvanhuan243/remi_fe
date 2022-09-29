@@ -3,24 +3,15 @@ function isProduction() {
 }
 
 function getBaseUrl() {
-  if (isProduction()) {
-    return 'https://parttimebee.tk';
-  }
-  return 'http://localhost:3001';
+  return process.env.BASE_URL;
 }
 
 function getApiBaseUrl() {
-  if (isProduction()) {
-    return 'https://api.parttimebee.tk/api/v1';
-  }
-  return 'http://localhost:3000/api/v1';
+  return process.env.BACKEND_BASE_API
 }
 
 function getApiUrl() {
-  if (isProduction()) {
-    return 'https://api.parttimebee.tk';
-  }
-  return 'http://localhost:3000';
+  return `${process.env.BACKEND_BASE_API} + /api/v1`
 }
 
 function getDefaultAvatar() {

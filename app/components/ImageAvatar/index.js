@@ -16,7 +16,7 @@ const styles = {
     height: 40,
   },
 };
-const requestUrl = `${config.API_BASE_URL}/users/${localStorage.currentUser}`;
+const requestUrl = `${config.API_URL}/users/${localStorage.currentUser}`;
 
 class ImageAvatar extends PureComponent {
   constructor() {
