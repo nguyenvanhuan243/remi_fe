@@ -226,21 +226,21 @@ function isProduction() {
 
 function getBaseUrl() {
   if (isProduction()) {
-    return 'https://devfinding.com';
+    return 'https://parttimebee.tk';
   }
   return 'http://localhost:3001';
 }
 
 function getApiBaseUrl() {
   if (isProduction()) {
-    return 'https://api.fiojob.com/api/v1';
+    return 'https://api.parttimebee.tk/api/v1';
   }
   return 'http://localhost:3000/api/v1';
 }
 
 function getApiUrl() {
   if (isProduction()) {
-    return 'https://api.fiojob.com';
+    return 'https://api.parttimebee.tk';
   }
   return 'http://localhost:3000';
 }
