@@ -1,0 +1,7 @@
+{
+    "header.postJob": "POST JOB",
+    "header.findJob": "FIND JOB",
+    "header.findPeople": "INTERVIEW",
+    "header.loginText": "LOG IN",
+    "header.signupText": "SIGN UP"
+}

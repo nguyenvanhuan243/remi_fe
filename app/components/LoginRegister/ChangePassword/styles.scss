@@ -1,0 +1,323 @@
+.ChangePassword-postJobAlert {
+  margin-bottom: 30px;
+}
+
+
+.ChangePassword-postJobForm {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  width: 1000px;
+}
+
+.ChangePassword-deleteMyAccount {
+  height: 104px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #e8e8e8;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.ChangePassword-deleteAccountContainer {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.ChangePassword-deleteAccounText {
+  width: 132px;
+  height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.ChangePassword-containerDeleteAccount {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.ChangePassword-title {
+  margin-top: 20px;
+}
+
+.ChangePassword-content {
+  margin-top: 10px;
+}
+
+.ChangePassword-content {
+  display: flex;
+}
+
+.ChangePassword-text {
+  width: 367px;
+  height: 14px;
+  
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.ChangePassword-button {
+  width: 98px;
+  height: 34px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+  padding-left: 16.5px;
+  padding-top: 7px;
+  margin-bottom: 30px;
+}
+
+.ChangePassword-buttonTextContainer {
+  width: 98px;
+  height: 34px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+  margin-top: 30px;
+  margin-left: 595px;
+}
+
+.ChangePassword-buttonText {
+  font-size: 13px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: 0.2px;
+  color: #999999;
+  cursor: pointer;
+  outline: none !important;
+  padding-left: 16.5px;
+  padding-top: 7px;
+}
+
+.ChangePassword-abstract {
+  width: 367px;
+  height: 14px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+  margin-top: 20px;
+}
+
+.ChangePasswordForm {
+  border-radius: 3px;
+  background-color: #ffffff;
+  border: solid 1px #e8e8e8;
+}
+
+.ChangePasswordForm-container {
+  padding: 40px;
+  padding-top: 0px !important;
+}
+
+.ChangePasswordForm-lableContainer {
+  width: 165px;
+  margin-right: 20px; 
+}
+
+.ChangePasswordForm-lableItem {
+  margin-top: 30px !important; 
+  min-height: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+}
+
+.ChangePasswordForm-avatarContainer {
+  display: flex;
+}
+
+.ChangePasswordForm-editAvatar {
+  height: 20px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+  margin-left: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.ChangePasswordForm-avatar {
+  width: 165px;
+  height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+  margin-top: 20px;
+}
+
+.ChangePasswordForm-image {
+  width: 60px;
+  height: 60px;
+  background-color: #d8d8d8;
+  border-radius: 30px;
+}
+
+input.ChangePasswordForm-image {
+  opacity: 0;
+	overflow: hidden;
+  position: absolute;
+}
+
+.ChangePasswordForm-optionInput {
+  font-weight: 500 !important;
+  color: #d8d8d8 !important;
+}
+
+.ChangePassword-editContainer {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.ChangePassword-editButton {
+  height: 34px;
+  border-radius: 3px;
+  background-color: #3f51b5;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  outline: none !important;
+}
+
+.ChangePassword-editButtonText {
+  min-width: 50px;
+  height: 20px;
+  object-fit: contain;
+  font-size: 13px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #ffffff;
+}
+ 
+.ChangePassword-savingContainer {
+  display: flex;
+}
+
+.ChangePassword-savingIcon {
+  margin-left: 30px;
+  margin-top: 4px;
+}
+
+.ChangePassword-savingText {
+  width: 55px;
+  height: 14px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+  margin-top: 10px;
+  margin-left: 12px;
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.ChangePassword-oKayContainer {
+  display: flex;
+}
+
+.ChangePassword-oKayIcon {
+  margin-left: 22px;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
+
+.ChangePassword-oKayText {
+  margin-left: 13px;
+  margin-top: 10px;
+}
+
+.ChangePassword-oKayText {
+  width: 61px;
+  height: 14px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+}
+
+.ChangePassword-errorLable {
+  color: #da552f !important;
+}
+
+.ChangePassword-errorSeparate {
+  background-color: #da552f !important;
+}
+
+.ChangePasswordForm-textError {
+  width: 187px;
+  height: 20px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #da552f;
+  margin-top: 4px !important;
+}
+
+.ChangePasswordForm-editor {
+  height: 140px !important;
+  overflow-y: auto !important;
+}
+
+.ChangePassword-container {
+  display: flex;
+  margin: 0 auto;
+  position: fixed;
+  margin-top: 60px !important;
+}
+
+.ChangePassword-googleAdsenseSidebar {
+  margin-top: 90px;
+}
+
+.ChangePassword-googleAdsenseBottom {
+  margin-top: 90px;
+}
