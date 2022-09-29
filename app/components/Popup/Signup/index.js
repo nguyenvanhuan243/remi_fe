@@ -2,10 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   TextField,
-  Button,
-  Select,
-  OutlinedInput,
-  MenuItem,
+  Button
 } from '@material-ui/core';
 import validator from 'validator';
 import 'sweetalert2/src/sweetalert2.scss';
@@ -13,10 +10,6 @@ import Swal from 'sweetalert2/dist/sweetalert2';
 import CloseIcon from 'components/Icons/CloseIcon/Loadable';
 import { isEmpty } from 'lodash';
 import UserAPI from '../../../api/backend/users';
-
-const USER_TYPES = {
-  candidate: 1
-}
 
 export default class Signup extends PureComponent {
   constructor() {
@@ -33,8 +26,7 @@ export default class Signup extends PureComponent {
       showEmailError: !validator.isEmail(email),
       showPasswordError: isEmpty(password),
     });
-    const user_type = USER_TYPES['candidate']
-    const params = { email, password, user_type };
+    const params = { email, password };
     if (validator.isEmail(email) && password) {
       UserAPI.create(params).then(response => {
         if (response.status === 201) {
