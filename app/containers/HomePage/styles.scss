@@ -1,0 +1,103 @@
+.HomePage {
+  @media only screen and (min-width: 800px) {
+    width: 1200px;
+  }
+  margin: 0 auto;
+}
+
+.HomePageContainer {
+  @media only screen and (min-width: 900px) {
+    width: 1200px;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 0px;
+  }
+}
+
+.HomePageContainer-categoryList {
+  width: 230px;
+  margin-right: 20px;
+  margin-top: 20px;
+  @media only screen and (max-width: 900px) {
+    display: none;
+  }
+}
+
+.HomePageContainer-jobListContainer {
+  display: grid;
+  margin-top: 21px;
+}
+
+.HomePageContainer-jobBy {
+  height: 32px;
+  margin-bottom: 11px;
+  font-size: 20px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000;
+}
+
+.HomePageContainer-sidebarContainer {
+  display: block;
+  margin-top: 20px;
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+}
+
+.HomePageContainer-sidebarContainerFixed {
+  width: min-content;
+}
+
+.HomePageContainer-reloading {
+  position: fixed;
+  z-index: 4px;
+  top: 40%;
+  left: 49%
+}
+
+.HomePageContainer-none {
+  width: 580px;
+}
+
+.HomePageContainer-categoryListFixed {
+  width: inherit;
+}
+
+.SearchBoxContainer {
+  padding-top: 85px;
+}
+
+.col-md-2-4 {
+  max-width: 20%;
+}
+
+.HomePage-container {
+  @media only screen and (min-width: 800px) {
+    width: 1200px;
+  }
+  margin: 0 auto;
+}
+
+.custom-button {
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.mobile-custom-button {
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+  width: 100%;
+}
+
+.HomePage-inputSearchByKeyword {
+  display: flex;
+}
+
+.HomePage-dont-have-job {
+  margin-top: 50px;
+}

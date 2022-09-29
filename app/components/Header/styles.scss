@@ -1,0 +1,217 @@
+.Header {
+  height: 65px;
+  position: fixed;
+  z-index: 16;
+  width: 100%;
+  left: 0px;
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5 30%, #333);
+}
+
+.Header-logoContainer {
+  padding-left: 0px;
+}
+
+.Header-container {
+  display: flex;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.SearchForm {
+  width: 230px;
+  height: 34px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+  margin-top: 15px;
+  display: flex;
+}
+
+.Header-logo {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.Header-logout {
+  margin-left: 56px;
+}
+
+.Header-postJob {
+  padding-left: 18px !important;
+  padding-right: 18px !important;
+  height: 34px;
+  margin-right: 3px !important;
+  margin-top: 13px !important;
+  outline: none !important;
+}
+
+.Header-postJobLink {
+  text-decoration: none !important;
+}
+
+.SearchForm-customInput {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+}
+
+.Header-loggedAvatar {
+  width: 40px;
+  height: 40px;
+  background-color: #d8d8d8;
+  border-radius: 30px;
+  margin-top: 12px;
+  cursor: pointer;
+  outline: none !important;
+  margin-left: 16px;
+}
+
+.Header-updatedAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  margin-left: -6px !important;
+}
+.Header-expandLoggedAvatarContainer {
+  width: 1100px;
+  margin: 0 auto;
+}
+.Header-expandLoggedAvatar {
+  width: 110px;
+  height: 107px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
+  border: solid 1px #e8e8e8;
+  margin-left: 1025px;
+  position: absolute;
+  border-radius: 4px;
+}
+
+.Header-ulContainer {
+  list-style-type: none;
+  padding-left: 20px !important;
+}
+
+.Header-hrefText {
+  width: 50px;
+  height: 16px;
+  font-size: 11px !important;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.45;
+  letter-spacing: 0.5px;
+  text-align: left;
+  color: #999999;
+  margin-bottom: 8px;
+}
+
+a.Header-hrefText:hover {
+  color: #999999;
+}
+
+.col-lg-4 {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.Header-postJobContainer {
+  display: flex !important;
+  padding-right: 0px;
+}
+
+input.SearchForm-customInput:focus {
+  outline: none !important;
+}
+
+input.SearchForm-customInput {
+  margin-left: 5px;
+}
+
+.Header-separateMenu {
+  width: 80px;
+  margin-left: -4px;
+  margin-right: 14px;
+  height: 1px;
+  background-color: #e8e8e8;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.Header-paddingTop {
+  margin-top: 12px;
+}
+
+.Header-searchMenuClicked {
+  display: grid;
+  padding: 10px;
+  background-color: #FFF;
+  box-shadow: 0 6px 12px rgba(0,0,0,.175);
+  border-radius: 3px;
+  position: absolute;
+  width: 230px;
+  z-index: 2;
+}
+
+.Header-searchListItem {
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+  padding-left: 3px;
+  height: 30px;
+  outline: none !important;
+}
+
+.Header-searchListItem:hover {
+  background-color: #0095D9;
+  cursor: pointer;
+  color: #FFF;
+}
+
+.Header-homePage {
+  margin-top: 8px;
+  font-size: 30px;
+  text-decoration: none !important;
+  color: #FFF;
+  display: flex;
+}
+
+.Header-homeText {
+  margin-left: 10px;
+}
+
+.Header-homePage:hover {
+  color: #FFF;
+}
+
+.Header-text {
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  margin-left: 5px;
+}
+
+.Header-mobileMenu {
+  @media only screen and (min-width: 900px) {
+    display: none;
+  }
+}
+
+.Header-loginModal {
+  text-decoration: none !important;
+}

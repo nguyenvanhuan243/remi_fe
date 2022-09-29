@@ -1,0 +1,36 @@
+name: Github Action For Frontend
+
+on:
+  push:
+    branches: 
+      - master
+  pull_request:
+    branches: 
+      - master
+
+jobs:  
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    strategy:
+      matrix:
+        node-version: 
+          - 14.x
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: ${{ github.workspace }}/package-lock.json
+
+      - run: npm install
+
+      - name: Deploy to Render Server (Master)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          curl -X GET https://api.render.com/deploy/srv-co204qa1hbls73a4dt80?key=DnDmNBz6bEw
+  

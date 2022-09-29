@@ -1,0 +1,158 @@
+.Signup {
+  height: 1157px;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  display: block;
+  z-index: 1;
+  width: 100%;
+  margin-left: -120px;
+}
+
+.Signup-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.Signup-closeButton {
+  width: 40px;
+  height: 40px;
+  background-color: #FFF;
+  border-radius: 30px;  
+  margin-left: 390px;
+  margin-top: 120px;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.Signup-reportJob {
+  width: 400px;
+  height: 390px;
+  border-radius: 3px;
+  background-color: #f9f9f9;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.Signup-reportJobContent {
+  width: 360px;
+  height: 340px;
+  border-radius: 3px;
+  background-color: #FFF;
+  border: solid 1px #e8e8e8;
+}
+
+.Signup-formText {
+  height: 32px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+  color: #3f51b5;
+  margin-top: 10px;
+  font-size: 25px;
+  text-align: center;
+}
+
+.Signup-formContainer {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.Signup-selectOptionTitle {
+  height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.54;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000 !important;
+}
+
+.Signup-submitReport {
+  min-width: 74px;
+  border-radius: 3px;
+  background-color: #007bff;
+  margin-top: 20px;
+  cursor: pointer;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Signup-fieldset {
+  margin-top: 10px;
+  height: 20px !important;
+}
+
+.Signup-radio {
+  width: 10px;
+  height: 10px;
+  border: solid 1px #e7e7e7;
+  display: none;
+}
+
+.Signup-submitReportText {
+  font-size: 12px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.45;
+  letter-spacing: 0.2px;
+  text-align: left;
+  color: #FFF;
+}
+
+.Signup-selected {
+  border: solid 4px #007bff;
+}
+
+.Signup-displayFlex {
+  display: flex;
+}
+
+.Signup-emailField {
+  width: 100%;
+}
+
+.Signup-passwordField {
+  width: 100%;
+}
+
+.Signup-button {
+  width: 100%;
+  height: 50px !important;
+  margin-top: 10px !important;
+  height: 38px;
+  border-radius: 3px;
+  background-color: #3f51b5;
+  padding: 0px !important;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  outline: none !important;
+  border-radius: 12px;
+  width: 100%;
+  margin-top: 10px !important;
+  background-image: linear-gradient(to bottom, #3f51b5, #3f51b5 30%, #28367E);
+}
+
+.Signup-buttonText {
+  font-size: 17px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  color: #FFF;
+}
+
+.Signup-googleLoginButton {
+  margin: 0 !important;
+}
+
+.Signup-menuItem {
+  width: 100px !important;
+}

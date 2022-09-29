@@ -1,0 +1,67 @@
+.LoadingItem {
+  border-bottom: solid 1px #e8e8e8;
+}
+
+.LoadingItem-image {
+  background-color: #d8d8d8;
+  margin-top: 14px;
+  margin-left: 15px;
+  margin-bottom: 14px;
+  width: 180px;
+  height: 120px;
+  border-radius: 12px;
+  @media only screen and (max-width: 600px) {
+    width: 100px;
+    height: 80px;
+  }
+}
+
+.LoadingItem-container {
+  display: flex;
+}
+
+.LoadingItem-rectangle {
+  margin-left: 15px;
+  margin-top: 25px;
+}
+
+.LoadingItem-rectangle1 {
+  width: 450px;
+  height: 18px;
+  background-color: #fff;
+}
+
+.LoadingItem-rectangle2 {
+  width: 300px;
+  height: 18px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+.LoadingItem-rectangle3 {
+  width: 200px;
+  height: 18px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+@keyframes placeHolderShimmer{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+
+.animated-background {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #f6f7f8;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  position: relative;
+  background-size: 800px 104px;
+}

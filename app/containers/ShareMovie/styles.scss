@@ -1,0 +1,203 @@
+.ShareMovie-title {
+  min-width: 97px;
+  height: 32px;
+  font-size: 26px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.23;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+
+.ShareMovie-content {
+  display: flex;
+  margin-top: 30px;
+}
+
+.ShareMovie-form {
+  border-radius: 3px;
+  background-color: #FFF;
+  border: solid 1px #e8e8e8;
+  margin-right: 20px;
+}
+
+.ShareMovie-formContainer {
+  margin: 40px;
+}
+
+.ShareMovie-lableCategory {
+  margin-bottom: 36px;
+}
+
+.ShareMovie-lableDescription {
+  margin-bottom: 255px;
+}
+
+.ShareMovie-lableSalary {
+  margin-bottom: 40px;
+}
+
+.ShareMovie-lableSalaryType {
+  margin-bottom: 40px;
+}
+
+.ShareMovie-lableSalaryState {
+  margin-bottom: 35px;
+}
+
+.ShareMovie-inputCategory {
+  margin-top: 54px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+}
+
+.ShareMovie-inputCategorySelected {
+  margin-top: 54px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  outline: 1px solid #5ec663 !important;
+}
+
+.ShareMovie-inputDescription {
+  width: 100% !important;
+  margin-top: 30px;
+}
+
+.ShareMovie-inputSalary {
+  margin-top: 54px;
+}
+
+.ShareMovie-inputSalaryType {
+  margin-top: 30px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+}
+
+.ShareMovie-inputSalaryTypeSelected {
+  margin-top: 30px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  outline: solid 1px #5ec663 !important;
+}
+
+.ShareMovie-inputSalaryState {
+  margin-top: 30px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  border: solid 1px #e8e8e8;
+}
+
+.ShareMovie-inputSalaryStateSelected {
+  margin-top: 30px;
+  width: 160px;
+  height: 30px;
+  border-radius: 3px;
+  outline: solid 1px #5ec663;
+}
+
+.ShareMovie-inputCity {
+  margin-top: 30px;
+}
+
+.ShareMovie-buttonContainer {
+  margin-top: 30px;
+  margin-left: 550px;
+  display: flex;
+}
+
+.ShareMovie-buttonPreview {
+  width: 90px;
+  height: 34px;
+  margin-right: 16px !important;
+  outline: none !important;
+}
+
+.ShareMovie-buttonShareMovie {
+  width: 96px;
+  height: 34px;
+  padding: 0px !important;
+  outline: none !important;
+}
+
+.ShareMovie-textAria {
+  width: 568px;
+  height: 216px;
+  outline: none !important;
+  resize: none;
+}
+
+.ShareMovie-customInput {
+  width: 100%;
+}
+
+.ShareMovie-importantAlert {
+  margin-top: 30px;
+   margin-bottom: 20px;
+}
+
+.ShareMovie-wrapper {
+  width: 100% !important;
+  display: block !important;
+  margin-bottom: 25px !important;
+  height: 400px !important;
+}
+
+.ShareMovie-editor {
+  height: 275px !important;
+  border: 1px solid #F1F1F1 !important;
+  padding: 5px !important;
+  border-radius: 2px !important;
+}
+
+.selectParent select{
+  min-width: 100px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent url('https://image.ibb.co/jXzxHJ/group.png') no-repeat 135px;
+  padding-left: 10px;
+  font-size: 13px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  text-align: left;
+  color: #999999;
+}
+
+.ShareMovie-provinceInput {
+  z-index: 100 !important;
+}
+
+.ShareMovie-container {
+  display: flex;
+  padding-bottom: 140px;
+  padding-top: 80px;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.rdw-text-align-dropdown {
+  z-index: 0 !important;
+}
+
+.rdw-list-dropdown {
+  z-index: 0 !important;
+}
+
+.DraftEditor-editorContainer {
+  z-index: 0 !important;
+}
+
+.ShareMovie--buttonText {
+  font-weight: 700;
+}
