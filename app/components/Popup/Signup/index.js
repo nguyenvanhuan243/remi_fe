@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import {
-  TextField,
-  Button
-} from '@material-ui/core';
+import { TextField, Button } from '@material-ui/core';
 import validator from 'validator';
 import 'sweetalert2/src/sweetalert2.scss';
 import Swal from 'sweetalert2/dist/sweetalert2';
@@ -14,18 +11,12 @@ import UserAPI from '../../../api/backend/users';
 export default class Signup extends PureComponent {
   constructor() {
     super();
-    this.state = {
-      showEmailError: false,
-      showPasswordError: false,
-    };
+    this.state = { showEmailError: false, showPasswordError: false };
   }
   onSubmit = () => {
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;
-    this.setState({
-      showEmailError: !validator.isEmail(email),
-      showPasswordError: isEmpty(password),
-    });
+    this.setState({ showEmailError: !validator.isEmail(email), showPasswordError: isEmpty(password) });
     const params = { email, password };
     if (validator.isEmail(email) && password) {
       UserAPI.create(params).then(response => {
@@ -33,9 +24,7 @@ export default class Signup extends PureComponent {
           Swal('Success!', 'Register successfully', 'success');
           return;
         }
-        if (response.data.status === 422) {
-          Swal('Thất Bại!', response.data.message, 'error');
-        }
+        if (response.status === 422) Swal('Thất Bại!', response.data.message, 'error');
       }).catch(error => {
         if (error) Swal('Thất Bại', 'Đăng kí tài khoản không thành công', 'error');
       });
@@ -83,19 +72,6 @@ export default class Signup extends PureComponent {
                       className="Signup-passwordField"
                     />
                   </div>
-                  {/* <div>
-                    <Select
-                      disabled
-                      value="10"
-                      autoWidth
-                      style={{ width: '100%' }}
-                      input={<OutlinedInput name="age" />}
-                    >
-                      <MenuItem value={10}>
-                        Tài Khoản Đăng Việc
-                      </MenuItem>
-                    </Select>
-                  </div> */}
                   <div>
                     <Button
                       variant="contained"
@@ -103,7 +79,7 @@ export default class Signup extends PureComponent {
                       className="Signup-button"
                       onClick={this.onSubmit}
                     >
-                      <span className="Signup-buttonText">Đăng Kí</span>
+                      <span className="Signup-buttonText">Sign Up</span>
                     </Button>
                   </div>
                 </div>

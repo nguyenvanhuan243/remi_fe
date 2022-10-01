@@ -161,13 +161,15 @@ var _ref = _jsx('span', {
   className: 'spinner-border spinner-border-sm mr-1'
 });
 
-var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_3_components_VideoCard_LoadingList_Loadable__["a" /* default */], {});
+var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_1_components_Header_Loadable__["a" /* default */], {});
 
-var _ref3 = _jsx('div', {}, void 0, _jsx('h1', {
+var _ref3 = _jsx(__WEBPACK_IMPORTED_MODULE_3_components_VideoCard_LoadingList_Loadable__["a" /* default */], {});
+
+var _ref4 = _jsx('div', {}, void 0, _jsx('h1', {
   className: 'HomePage-dont-have-job'
 }, void 0, 'Don\'t have any videos'));
 
-function HomePage(messages) {
+function HomePage() {
   var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
       isLoading = _useState2[0],
@@ -237,17 +239,11 @@ function HomePage(messages) {
 
   return _jsx('div', {
     className: 'HomePage'
-  }, void 0, _jsx(__WEBPACK_IMPORTED_MODULE_1_components_Header_Loadable__["a" /* default */], {
-    postJobText: messages['header.postJob'],
-    findJobText: messages['header.findJob'],
-    findPeopleText: messages['header.findPeople'],
-    loginText: messages['header.loginText'],
-    signupText: messages['header.signupText']
-  }), _jsx('div', {
+  }, void 0, _ref2, _jsx('div', {
     className: 'HomePage-container'
-  }, void 0, renderSearchButton(), isLoading ? _ref2 : _jsx('div', {
+  }, void 0, renderSearchButton(), isLoading ? _ref3 : _jsx('div', {
     className: 'row'
-  }, void 0, movieList.length === 0 ? _ref3 : movieList.map(function (item) {
+  }, void 0, movieList.length === 0 ? _ref4 : movieList.map(function (item) {
     return _jsx('div', {
       className: 'col-md-12'
     }, item.id, _jsx(__WEBPACK_IMPORTED_MODULE_2_components_VideoCard_Item_Loadable__["a" /* default */], {

@@ -6,7 +6,7 @@ import MovieAPI from '../../api/backend/movies';
 import UserAPI from '../../api/backend/users'; 
 import Button from '@material-ui/core/Button';
 import UserUtils from '../../utils/user/UserUtils';
-export default function HomePage(messages) {
+export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
   const [movieList, setMovieList] = useState({})
   const [isSearching, setIsSearching] = useState(false)
@@ -52,29 +52,19 @@ export default function HomePage(messages) {
     ]
     return (
       <div className='SearchBoxContainer'>
-        {
-          titleList.map((item, i) => {
-            return (
-              <Button onClick={() => searchMovieByTitle(item)} className='custom-button' variant='contained' color={ i % 2 === 0 ? 'success' : 'primary' }>
-                { isSearching && currentSearchSelected === item && <span className="spinner-border spinner-border-sm mr-1"></span> }
-                { item }
-              </Button>
-            )
-          })
+        { titleList.map((item, i) => {
+          return (
+            <Button onClick={() => searchMovieByTitle(item)} className='custom-button' variant='contained' color={ i % 2 === 0 ? 'success' : 'primary' }>
+              { isSearching && currentSearchSelected === item && <span className="spinner-border spinner-border-sm mr-1"></span> }
+              { item }
+            </Button>)})
         }
-      </div>
-    )
+      </div>)
   }
 
   return (
     <div className="HomePage">
-      <Header
-        postJobText={messages['header.postJob']}
-        findJobText={messages['header.findJob']}
-        findPeopleText={messages['header.findPeople']}
-        loginText={messages['header.loginText']}
-        signupText={messages['header.signupText']}
-      />
+      <Header />
       <div className="HomePage-container">
         { renderSearchButton() }
         { isLoading ?
