@@ -11,9 +11,14 @@ webpackJsonp([0],{
 
 
 var MovieAPI = {
-  getMovies: function getMovies() {
+
+  // Get movies
+  getMovies: function getMovies(title) {
+    if (title) return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies?title=' + title);
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies');
   },
+
+  // Create movies
   create: function create(params, accessToken) {
     var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies';
     var authOptions = {
@@ -42,7 +47,7 @@ var MovieAPI = {
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_loadable___default()({
   loader: function loader() {
-    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
+    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
   },
   loading: function loading() {
     return null;
