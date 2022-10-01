@@ -92,7 +92,6 @@ export default function HomePage(messages) {
                     description={item.description}
                     sharedByEmail={item.shared_by}
                     embedUrl={item.embed_url}
-                    movieLike={item.like}
                     movieID={item.id}
                     totalLikes={item.total_likes}
                     totalDisLikes={item.total_dislikes}

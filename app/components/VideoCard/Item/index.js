@@ -20,7 +20,6 @@ export default class VideoCard extends PureComponent {
   }
 
   like = id => LikeAPI.likeMovie(UserUtils.getAccessToken(), id).then(response => location.reload())
-
   disLike = id => LikeAPI.disLikeMovie(UserUtils.getAccessToken(), id).then(response => location.reload())
   
   renderVoting = (movie, movieID, showVoted) => {
@@ -40,14 +39,15 @@ export default class VideoCard extends PureComponent {
       embedUrl,
       description,
       sharedByEmail,
-      movieLike,
       movieID,
       totalLikes,
       totalDisLikes,
       currentUser,
       likeList
     } = this.props;
-    const showVoted = likeList.filter(item => item.user_id === currentUser.id).length > 0
+    const movieLikedByUser = likeList.filter(item => item.user_id === currentUser.id)
+    const showVoted = movieLikedByUser && movieLikedByUser.length > 0
+    const movieLiked = movieLikedByUser && movieLikedByUser[0]
     return (
       <div className="VideoCard">
         <Card className="VideoCard-container">
@@ -57,17 +57,12 @@ export default class VideoCard extends PureComponent {
           <CardBody className="col-md-6">
             <CardTitle>
               <span className="VideoCard-title">{ title }</span>
-              { this.renderVoting(movieLike, movieID, showVoted) }
+              { this.renderVoting(movieLiked, movieID, showVoted) }
             </CardTitle>
-            <CardTitle>
-              <span>{ `Shared by: ${sharedByEmail}` }</span>
-            </CardTitle>
+            <CardTitle><span>{ `Shared by: ${sharedByEmail}` }</span></CardTitle>
             { totalLikes } <ThumbUpAltOutlinedIcon></ThumbUpAltOutlinedIcon>
             { totalDisLikes } <ThumbDownAltOutlinedIcon></ThumbDownAltOutlinedIcon>
-            <CardTitle>
-              Description: <br/>
-              <span>{ description }</span>
-            </CardTitle>
+            <CardTitle>Description: <br/><span>{ description }</span></CardTitle>
           </CardBody>
         </Card>
       </div>
@@ -80,7 +75,6 @@ VideoCard.propTypes = {
   description: PropTypes.string,
   sharedByEmail: PropTypes.string,
   embedUrl: PropTypes.string,
-  movieLike: PropTypes.any,
   movieID: PropTypes.any,
   totalLikes: PropTypes.any,
   totalDisLikes: PropTypes,

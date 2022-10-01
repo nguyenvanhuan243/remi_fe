@@ -6388,16 +6388,17 @@ var Item_VideoCard = function (_PureComponent) {
           embedUrl = _props.embedUrl,
           description = _props.description,
           sharedByEmail = _props.sharedByEmail,
-          movieLike = _props.movieLike,
           movieID = _props.movieID,
           totalLikes = _props.totalLikes,
           totalDisLikes = _props.totalDisLikes,
           currentUser = _props.currentUser,
           likeList = _props.likeList;
 
-      var showVoted = likeList.filter(function (item) {
+      var movieLikedByUser = likeList.filter(function (item) {
         return item.user_id === currentUser.id;
-      }).length > 0;
+      });
+      var showVoted = movieLikedByUser && movieLikedByUser.length > 0;
+      var movieLiked = movieLikedByUser && movieLikedByUser[0];
       return _jsx('div', {
         className: 'VideoCard'
       }, void 0, _jsx(reactstrap_es_Card, {
@@ -6413,7 +6414,7 @@ var Item_VideoCard = function (_PureComponent) {
         className: 'col-md-6'
       }, void 0, _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {
         className: 'VideoCard-title'
-      }, void 0, title), this.renderVoting(movieLike, movieID, showVoted)), _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {}, void 0, 'Shared by: ' + sharedByEmail)), totalLikes, ' ', _ref4, totalDisLikes, ' ', _ref5, _jsx(reactstrap_es_CardTitle, {}, void 0, 'Description: ', _ref6, _jsx('span', {}, void 0, description)))));
+      }, void 0, title), this.renderVoting(movieLiked, movieID, showVoted)), _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {}, void 0, 'Shared by: ' + sharedByEmail)), totalLikes, ' ', _ref4, totalDisLikes, ' ', _ref5, _jsx(reactstrap_es_CardTitle, {}, void 0, 'Description: ', _ref6, _jsx('span', {}, void 0, description)))));
     }
   }]);
 
