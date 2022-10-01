@@ -19,17 +19,21 @@ export default class VideoCard extends PureComponent {
     this.state = {};
   }
 
-  like = (id) => {
-    LikeAPI.likeMovie(UserUtils.getAccessToken(), id).then(
-      response => location.reload()
+  like = id => LikeAPI.likeMovie(UserUtils.getAccessToken(), id).then(response => location.reload())
+
+  disLike = id => LikeAPI.disLikeMovie(UserUtils.getAccessToken(), id).then(response => location.reload())
+  
+  renderVoting = (movie, movieID, showVoted) => {
+    if (!UserUtils.getAccessToken()) return null
+    if (showVoted) return <div>{ movie && movie.status === 'like' ? <span><ThumbUpAltIcon/>(Voted Up)</span> : <span><ThumbDownIcon/>(Voted Down)</span> }</div>
+    return (
+      <div>
+        <Button onClick={() => this.like(movieID)}><ThumbUpAltOutlinedIcon className="VideoCard-likeButton" /></Button>
+        <Button><ThumbDownAltOutlinedIcon className="VideoCard-likeButton" onClick={() => this.disLike(movieID)} /></Button>(un-voted)
+      </div>
     )
   }
 
-  disLike = id => {
-    LikeAPI.disLikeMovie(UserUtils.getAccessToken(), id).then(
-      response => location.reload()
-    )
-  }
   render() {
     const { 
       title,
@@ -43,7 +47,6 @@ export default class VideoCard extends PureComponent {
       currentUser,
       likeList
     } = this.props;
-    const accessToken = UserUtils.getAccessToken()
     const showVoted = likeList.filter(item => item.user_id === currentUser.id).length > 0
     return (
       <div className="VideoCard">
@@ -54,22 +57,7 @@ export default class VideoCard extends PureComponent {
           <CardBody className="col-md-6">
             <CardTitle>
               <span className="VideoCard-title">{ title }</span>
-              { showVoted ?
-              <div>
-                {
-                  accessToken ? movieLike && movieLike.status === 'like' ? <span><ThumbUpAltIcon/>(Voted Up)</span> : <span><ThumbDownIcon/>(Voted Down)</span> : null
-                }
-              </div> :
-              <div>
-                <Button onClick={() => this.like(movieID)}>
-                  <ThumbUpAltOutlinedIcon className="VideoCard-likeButton" />
-                 </Button>
-                 <Button>
-                    <ThumbDownAltOutlinedIcon className="VideoCard-likeButton" onClick={() => this.disLike(movieID)} />
-                 </Button>
-                 (un-voted)
-              </div> 
-              } 
+              { this.renderVoting(movieLike, movieID, showVoted) }
             </CardTitle>
             <CardTitle>
               <span>{ `Shared by: ${sharedByEmail}` }</span>

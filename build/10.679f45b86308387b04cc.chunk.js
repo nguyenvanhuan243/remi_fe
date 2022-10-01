@@ -6350,15 +6350,30 @@ var Item_VideoCard = function (_PureComponent) {
     var _this = Item__possibleConstructorReturn(this, (VideoCard.__proto__ || Object.getPrototypeOf(VideoCard)).call(this));
 
     _this.like = function (id) {
-      likes.likeMovie(UserUtils["a" /* default */].getAccessToken(), id).then(function (response) {
+      return likes.likeMovie(UserUtils["a" /* default */].getAccessToken(), id).then(function (response) {
         return location.reload();
       });
     };
 
     _this.disLike = function (id) {
-      likes.disLikeMovie(UserUtils["a" /* default */].getAccessToken(), id).then(function (response) {
+      return likes.disLikeMovie(UserUtils["a" /* default */].getAccessToken(), id).then(function (response) {
         return location.reload();
       });
+    };
+
+    _this.renderVoting = function (movie, movieID, showVoted) {
+      if (!UserUtils["a" /* default */].getAccessToken()) return null;
+      if (showVoted) return _jsx('div', {}, void 0, movie && movie.status === 'like' ? _ref : _ref2);
+      return _jsx('div', {}, void 0, _jsx(Button_default.a, {
+        onClick: function onClick() {
+          return _this.like(movieID);
+        }
+      }, void 0, _ref3), _jsx(Button_default.a, {}, void 0, _jsx(ThumbDownAltOutlined_default.a, {
+        className: 'VideoCard-likeButton',
+        onClick: function onClick() {
+          return _this.disLike(movieID);
+        }
+      })), '(un-voted)');
     };
 
     _this.state = {};
@@ -6368,8 +6383,6 @@ var Item_VideoCard = function (_PureComponent) {
   _createClass(VideoCard, [{
     key: 'render',
     value: function render() {
-      var _this2 = this;
-
       var _props = this.props,
           title = _props.title,
           embedUrl = _props.embedUrl,
@@ -6382,7 +6395,6 @@ var Item_VideoCard = function (_PureComponent) {
           currentUser = _props.currentUser,
           likeList = _props.likeList;
 
-      var accessToken = UserUtils["a" /* default */].getAccessToken();
       var showVoted = likeList.filter(function (item) {
         return item.user_id === currentUser.id;
       }).length > 0;
@@ -6401,16 +6413,7 @@ var Item_VideoCard = function (_PureComponent) {
         className: 'col-md-6'
       }, void 0, _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {
         className: 'VideoCard-title'
-      }, void 0, title), showVoted ? _jsx('div', {}, void 0, accessToken ? movieLike && movieLike.status === 'like' ? _ref : _ref2 : null) : _jsx('div', {}, void 0, _jsx(Button_default.a, {
-        onClick: function onClick() {
-          return _this2.like(movieID);
-        }
-      }, void 0, _ref3), _jsx(Button_default.a, {}, void 0, _jsx(ThumbDownAltOutlined_default.a, {
-        className: 'VideoCard-likeButton',
-        onClick: function onClick() {
-          return _this2.disLike(movieID);
-        }
-      })), '(un-voted)')), _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {}, void 0, 'Shared by: ' + sharedByEmail)), totalLikes, ' ', _ref4, totalDisLikes, ' ', _ref5, _jsx(reactstrap_es_CardTitle, {}, void 0, 'Description: ', _ref6, _jsx('span', {}, void 0, description)))));
+      }, void 0, title), this.renderVoting(movieLike, movieID, showVoted)), _jsx(reactstrap_es_CardTitle, {}, void 0, _jsx('span', {}, void 0, 'Shared by: ' + sharedByEmail)), totalLikes, ' ', _ref4, totalDisLikes, ' ', _ref5, _jsx(reactstrap_es_CardTitle, {}, void 0, 'Description: ', _ref6, _jsx('span', {}, void 0, description)))));
     }
   }]);
 
