@@ -2,18 +2,31 @@ function isProduction() {
   return process.env.NODE_ENV === 'production';
 }
 
+// Start Front End
 function getBaseUrl() {
-  return process.env.BASE_URL;
+  if (isProduction()) {
+    return "https://remi-frontend-ruae.onrender.com"
+  }
+  return "http://localhost:3001"
 }
+// End Front End
 
+// Start backend
 function getApiBaseUrl() {
-  return process.env.BACKEND_BASE_API
+  if (isProduction()) {
+    return "https://remitano-backend.onrender.com"
+  }
+  return "http://localhost:3000"
 }
 
 function getApiUrl() {
-  return `${process.env.BACKEND_BASE_API} + /api/v1`
+  if (isProduction()) {
+    return "https://remitano-backend.onrender.com/api/v1"
+  }
+  return "http://localhost:3000/api/v1"
 }
 
+// End BackEnd
 function getDefaultAvatar() {
   let randomNumber = Math.floor(Math.random() * 3);
   const imageList = [
