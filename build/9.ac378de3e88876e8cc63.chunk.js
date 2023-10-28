@@ -191,7 +191,7 @@ function getApiBaseUrl() {
 }
 
 function getApiUrl() {
-  return `${Object({"NODE_ENV":"production"}).BACKEND_BASE_API} + /api/v1`
+  return `${Object({"NODE_ENV":"production"}).BACKEND_BASE_API}/api/v1`
 }
 
 function getDefaultAvatar() {
