@@ -14,13 +14,13 @@ var MovieAPI = {
 
   // Get movies
   getMovies: function getMovies(title) {
-    if (title) return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies?title=' + title);
-    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies');
+    if (title) return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/movies?title=' + title);
+    return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/movies');
   },
 
   // Create movies
   create: function create(params, accessToken) {
-    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/movies';
+    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/movies';
     var authOptions = {
       headers: {
         Authorization: accessToken
@@ -47,19 +47,19 @@ var MovieAPI = {
 var UserAPI = {
   // Create a user
   create: function create(params) {
-    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/users';
+    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/users';
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(requestUrl, params);
   },
 
   // Login user
   login: function login(params) {
-    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/users/sign_in';
+    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/users/sign_in';
     return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(requestUrl, params);
   },
 
   // Change Password Of User.
   changePassword: function changePassword(params, accessToken) {
-    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/users/change_password';
+    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/users/change_password';
     var authOptions = {
       headers: {
         Authorization: accessToken
@@ -70,7 +70,7 @@ var UserAPI = {
 
   // Get user by access token
   getUserByAccessToken: function getUserByAccessToken(accessToken) {
-    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_BASE_URL + '/users/me';
+    var requestUrl = __WEBPACK_IMPORTED_MODULE_1__config__["a" /* default */].API_URL + '/users/me';
     var authOptions = {
       headers: {
         Authorization: accessToken
@@ -271,24 +271,15 @@ function isProduction() {
 }
 
 function getBaseUrl() {
-  if (isProduction()) {
-    return 'https://metatrader.fimarketcap.com';
-  }
-  return 'http://localhost:3001';
+  return Object({"NODE_ENV":"production"}).BASE_URL;
 }
 
 function getApiBaseUrl() {
-  if (isProduction()) {
-    return 'https://remitano.onrender.com/api/v1';
-  }
-  return 'http://localhost:3000/api/v1';
+  return Object({"NODE_ENV":"production"}).BACKEND_BASE_API
 }
 
 function getApiUrl() {
-  if (isProduction()) {
-    return 'https://remitano.onrender.com';
-  }
-  return 'http://localhost:3000';
+  return `${Object({"NODE_ENV":"production"}).BACKEND_BASE_API} + /api/v1`
 }
 
 function getDefaultAvatar() {
