@@ -270,13 +270,16 @@ function isProduction() {
   return "production" === 'production';
 }
 
+// Start Front End
 function getBaseUrl() {
   if (isProduction()) {
     return "https://remi-frontend-ruae.onrender.com"
   }
   return "http://localhost:3001"
 }
+// End Front End
 
+// Start backend
 function getApiBaseUrl() {
   if (isProduction()) {
     return "https://remitano-backend.onrender.com"
@@ -291,6 +294,7 @@ function getApiUrl() {
   return "http://localhost:3000/api/v1"
 }
 
+// End BackEnd
 function getDefaultAvatar() {
   let randomNumber = Math.floor(Math.random() * 3);
   const imageList = [
