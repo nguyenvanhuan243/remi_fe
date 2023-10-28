@@ -24,4 +24,4 @@ jobs:
 
       - name: Deploy to Render
         run: |
-          curl -X GET "https://api.render.com/deploy/srv-cku6fq6b0mos73ferjpg?key=-VoInxzVS-c"
+          curl -X GET "https://api.render.com/deploy/srv-cku81feb0mos73fq377g?key=luWn7b9wyq0"
