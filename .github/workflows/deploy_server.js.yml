@@ -1,27 +1,36 @@
-name: DEPLOY EXCHANGE WITH RENDER SERVER
+name: Github Action For Frontend
 
 on:
   push:
-    branches:
+    branches: 
+      - master
+  pull_request:
+    branches: 
       - master
 
-jobs:
-  deploy:
+jobs:  
+  build:
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: ./
     strategy:
       matrix:
-        node-version: [16.x]
-
+        node-version: 
+          - 14.x
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+          cache-dependency-path: ${{ github.workspace }}/package-lock.json
 
-      - name: Deploy to Render
+      - run: npm install
+
+      - name: Deploy to Render Server (Master)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          curl -X GET "https://api.render.com/deploy/srv-cku81feb0mos73fq377g?key=luWn7b9wyq0"
+          curl -X GET https://api.render.com/deploy/srv-co204qa1hbls73a4dt80?key=DnDmNBz6bEw
+  
