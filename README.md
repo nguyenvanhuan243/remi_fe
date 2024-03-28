@@ -24,3 +24,8 @@ npm install
 npm run build:dll
 npm run build
 ```
+
+```
+npm cache clean --force
+npm update
+```
