@@ -5,7 +5,7 @@ function isProduction() {
 // Start Front End
 function getBaseUrl() {
   if (isProduction()) {
-    return "https://remi-frontend-ruae.onrender.com"
+    return "https://remitano-remi-fe.onrender.com/"
   }
   return "http://localhost:3000"
 }
@@ -14,7 +14,7 @@ function getBaseUrl() {
 // Start backend
 function getApiBaseUrl() {
   if (isProduction()) {
-    return "https://remitano-backend.onrender.com"
+    return "https://remitano-backend-api.onrender.com"
   }
   return "http://localhost:3001"
 }
