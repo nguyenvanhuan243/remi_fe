@@ -21,7 +21,7 @@ function getApiBaseUrl() {
 
 function getApiUrl() {
   if (isProduction()) {
-    return "https://remitano-backend.onrender.com/api/v1"
+    return "https://remitano-backend-api.onrender.com/api/v1"
   }
   return "http://localhost:3001/api/v1"
 }
