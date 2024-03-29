@@ -97,7 +97,7 @@ var UserAPI = {
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_loadable___default()({
   loader: function loader() {
-    return __webpack_require__.e/* import() */(11).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
+    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
   },
   loading: function loading() {
     return null;
@@ -119,7 +119,7 @@ var UserAPI = {
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_loadable___default()({
   loader: function loader() {
-    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./app/components/VideoCard/Item/index.js"));
+    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, "./app/components/VideoCard/Item/index.js"));
   },
   loading: function loading() {
     return null;
@@ -144,9 +144,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button__ = __webpack_require__("./node_modules/@material-ui/core/Button/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_user_UserUtils__ = __webpack_require__("./app/utils/user/UserUtils.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__config__ = __webpack_require__("./config.js");
 var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 
 
 
@@ -196,16 +198,54 @@ function HomePage() {
       setCurrentSearchSelected = _useState10[1];
 
   Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+    connectToSocket();
     __WEBPACK_IMPORTED_MODULE_4__api_backend_movies__["a" /* default */].getMovies().then(function (res) {
       setMovieList(res.data);
       setTimeout(function () {
         return setIsLoading(false);
       }, 1000);
     });
-    __WEBPACK_IMPORTED_MODULE_5__api_backend_users__["a" /* default */].getUserByAccessToken(__WEBPACK_IMPORTED_MODULE_7__utils_user_UserUtils__["a" /* default */].getAccessToken()).then(function (res) {
-      return setCurrentUser(res.data);
-    });
+    try {
+      __WEBPACK_IMPORTED_MODULE_5__api_backend_users__["a" /* default */].getUserByAccessToken(__WEBPACK_IMPORTED_MODULE_7__utils_user_UserUtils__["a" /* default */].getAccessToken()).then(function (res) {
+        return setCurrentUser(res.data);
+      });
+    } catch (exceptionVar) {
+      console.log("connect socket error");
+    }
   }, []);
+
+  var connectToSocket = function connectToSocket() {
+    try {
+      var token = localStorage.getItem("accessToken");
+      console.log("Socket #####", token);
+      // const cable = new WebSocket(`ws://${config.API_BASE_URL}/cable?token=${token}`);
+      var cable = new WebSocket('ws://localhost:3001/cable?token=' + token);
+      // const cable = new WebSocket(`ws://remitano-backend-api.onrender.com/cable?token=${token}`)
+      cable.onopen = function () {
+        console.log('Connected to Action Cable');
+
+        var subscribeMessage = {
+          command: 'subscribe',
+          identifier: JSON.stringify({
+            channel: 'MoviesChannel',
+            id: '65b75b213dd35e4374430423'
+          })
+        };
+
+        cable.send(JSON.stringify(subscribeMessage));
+      };
+
+      cable.onmessage = function (event) {
+        var data = JSON.parse(event.data);
+        console.log("#####", data["message"]);
+        if (data && data["message"] && data["message"]["title"]) {
+          alert(data["message"]["title"]);
+        };
+      };
+    } catch (exceptionVar) {
+      console.log("connect socket error");
+    }
+  };
 
   var searchMovieByTitle = function searchMovieByTitle(title) {
     setIsLoading(true);
@@ -252,10 +292,7 @@ function HomePage() {
       sharedByEmail: item.shared_by,
       embedUrl: item.embed_url,
       movieID: item.id,
-      totalLikes: item.total_likes,
-      totalDisLikes: item.total_dislikes,
-      currentUser: currentUser,
-      likeList: item.like_list
+      currentUser: currentUser
     }));
   }))));
 }
@@ -287,6 +324,13 @@ function getApiBaseUrl() {
   return "http://localhost:3001"
 }
 
+function getSocketBaseUrl() {
+  if (isProduction()) {
+    return "remitano-backend-api.onrender.com/cable"
+  }
+  return "localhost:3001/cable"
+}
+
 function getApiUrl() {
   if (isProduction()) {
     return "https://remitano-backend-api.onrender.com/api/v1"
@@ -315,6 +359,7 @@ const config = {
   API_URL: getApiUrl(),
   DEFAULT_AVATAR: getDefaultAvatar(),
   REQUEST_TOKEN: getRequestToken(),
+  SOCKET_BASE_URL: getSocketBaseUrl()
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (config);
