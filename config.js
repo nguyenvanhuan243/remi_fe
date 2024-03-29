@@ -19,6 +19,13 @@ function getApiBaseUrl() {
   return "http://localhost:3001"
 }
 
+function getSocketBaseUrl() {
+  if (isProduction()) {
+    return "remitano-backend-api.onrender.com/cable"
+  }
+  return "localhost:3001/cable"
+}
+
 function getApiUrl() {
   if (isProduction()) {
     return "https://remitano-backend-api.onrender.com/api/v1"
@@ -47,6 +54,7 @@ const config = {
   API_URL: getApiUrl(),
   DEFAULT_AVATAR: getDefaultAvatar(),
   REQUEST_TOKEN: getRequestToken(),
+  SOCKET_BASE_URL: getSocketBaseUrl()
 };
 
 export default config;
