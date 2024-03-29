@@ -20,15 +20,13 @@ export default class Login extends PureComponent {
       errorEmail: false,
       errorPassword: false,
       showForgotPasswordForm: false,
+      userInfo: {}
     };
   }
 
   onLogin = () => {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    const params = { email, password };
     if (this.shouldSubmitForm(email, password)) {
-      UserAPI.login(params).then(response => {
+      UserAPI.login(this.state.userInfo).then(response => {
         UserUtils.setAccessToken(response.data.access_token);
         window.location.replace(`${config.BASE_URL}`);
       }).catch(() => {
@@ -81,11 +79,16 @@ export default class Login extends PureComponent {
                 <div>
                   <TextField
                     error={errorEmail}
-                    id="login-email"
                     label="Email"
                     margin="normal"
                     variant="outlined"
                     className="Login-emailField"
+                    onChange={(e) => {
+                      setUserInfo({
+                        ...userInfo,
+                        email: e.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div>
@@ -95,8 +98,13 @@ export default class Login extends PureComponent {
                     type="password"
                     margin="normal"
                     variant="outlined"
-                    id="login-password"
                     className="Login-passwordField"
+                    onChange={(e) => {
+                      setUserInfo({
+                        ...userInfo,
+                        password: e.target.value,
+                      });
+                    }}
                   />
                 </div>
                 <div>
