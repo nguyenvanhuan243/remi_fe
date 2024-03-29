@@ -35,8 +35,8 @@ export default function HomePage() {
       const token = localStorage.getItem("accessToken")
       console.log("Socket #####", token)
       // const cable = new WebSocket(`ws://${config.API_BASE_URL}/cable?token=${token}`);
-      // const cable = new WebSocket(`ws://localhost:3001/cable?token=${token}`);
-      const cable = new WebSocket(`ws://remitano-backend-api.onrender.com/cable?token=${token}`)
+      const cable = new WebSocket(`ws://localhost:3001/cable?token=${token}`);
+      // const cable = new WebSocket(`ws://remitano-backend-api.onrender.com/cable?token=${token}`)
       cable.onopen = () => {
         console.log('Connected to Action Cable')
 
@@ -125,10 +125,7 @@ export default function HomePage() {
                     sharedByEmail={item.shared_by}
                     embedUrl={item.embed_url}
                     movieID={item.id}
-                    totalLikes={item.total_likes}
-                    totalDisLikes={item.total_dislikes}
                     currentUser={currentUser}
-                    likeList={item.like_list}
                   />
                 </div>))
             }
