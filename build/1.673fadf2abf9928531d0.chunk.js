@@ -97,29 +97,7 @@ var UserAPI = {
 
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_loadable___default()({
   loader: function loader() {
-    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
-  },
-  loading: function loading() {
-    return null;
-  }
-}));
-
-/***/ }),
-
-/***/ "./app/components/VideoCard/Item/Loadable.js":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_loadable__ = __webpack_require__("./node_modules/react-loadable/lib/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react_loadable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react_loadable__);
-/**
- * Asynchronously loads the component for HomePage
- */
-
-
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_react_loadable___default()({
-  loader: function loader() {
-    return __webpack_require__.e/* import() */(13).then(__webpack_require__.bind(null, "./app/components/VideoCard/Item/index.js"));
+    return __webpack_require__.e/* import() */(8).then(__webpack_require__.bind(null, "./app/components/Header/index.js"));
   },
   loading: function loading() {
     return null;
@@ -133,18 +111,64 @@ var UserAPI = {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+// EXTERNAL MODULE: ./node_modules/react/index.js
+var react = __webpack_require__("./node_modules/react/index.js");
+var react_default = /*#__PURE__*/__webpack_require__.n(react);
+
+// EXTERNAL MODULE: ./app/components/Header/Loadable.js
+var Loadable = __webpack_require__("./app/components/Header/Loadable.js");
+
+// EXTERNAL MODULE: ./node_modules/react-loadable/lib/index.js
+var lib = __webpack_require__("./node_modules/react-loadable/lib/index.js");
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
+
+// CONCATENATED MODULE: ./app/components/VideoCard/Item/Loadable.js
+/**
+ * Asynchronously loads the component for HomePage
+ */
+
+
+/* harmony default export */ var Item_Loadable = (lib_default()({
+  loader: function loader() {
+    return __webpack_require__.e/* import() */(7).then(__webpack_require__.bind(null, "./app/components/VideoCard/Item/index.js"));
+  },
+  loading: function loading() {
+    return null;
+  }
+}));
+// CONCATENATED MODULE: ./app/components/VideoCard/LoadingList/Loadable.js
+/**
+ * Asynchronously loads the component for HomePage
+ */
+
+
+/* harmony default export */ var LoadingList_Loadable = (lib_default()({
+  loader: function loader() {
+    return __webpack_require__.e/* import() */(10).then(__webpack_require__.bind(null, "./app/components/VideoCard/LoadingList/index.js"));
+  },
+  loading: function loading() {
+    return null;
+  }
+}));
+// EXTERNAL MODULE: ./app/api/backend/movies.js
+var movies = __webpack_require__("./app/api/backend/movies.js");
+
+// EXTERNAL MODULE: ./app/api/backend/users.js
+var users = __webpack_require__("./app/api/backend/users.js");
+
+// EXTERNAL MODULE: ./node_modules/@material-ui/core/Button/index.js
+var Button = __webpack_require__("./node_modules/@material-ui/core/Button/index.js");
+var Button_default = /*#__PURE__*/__webpack_require__.n(Button);
+
+// EXTERNAL MODULE: ./app/utils/user/UserUtils.js
+var UserUtils = __webpack_require__("./app/utils/user/UserUtils.js");
+
+// EXTERNAL MODULE: ./config.js
+var config = __webpack_require__("./config.js");
+
+// CONCATENATED MODULE: ./app/containers/HomePage/index.js
 /* harmony export (immutable) */ __webpack_exports__["default"] = HomePage;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__("./node_modules/react/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_components_Header_Loadable__ = __webpack_require__("./app/components/Header/Loadable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_components_VideoCard_Item_Loadable__ = __webpack_require__("./app/components/VideoCard/Item/Loadable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_components_VideoCard_LoadingList_Loadable__ = __webpack_require__("./app/components/VideoCard/LoadingList/Loadable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_backend_movies__ = __webpack_require__("./app/api/backend/movies.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__api_backend_users__ = __webpack_require__("./app/api/backend/users.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button__ = __webpack_require__("./node_modules/@material-ui/core/Button/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__utils_user_UserUtils__ = __webpack_require__("./app/utils/user/UserUtils.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__config__ = __webpack_require__("./config.js");
 var _jsx = function () { var REACT_ELEMENT_TYPE = typeof Symbol === "function" && Symbol.for && Symbol.for("react.element") || 0xeac7; return function createRawReactElement(type, props, key, children) { var defaultProps = type && type.defaultProps; var childrenLength = arguments.length - 3; if (!props && childrenLength !== 0) { props = {}; } if (props && defaultProps) { for (var propName in defaultProps) { if (props[propName] === void 0) { props[propName] = defaultProps[propName]; } } } else if (!props) { props = defaultProps || {}; } if (childrenLength === 1) { props.children = children; } else if (childrenLength > 1) { var childArray = Array(childrenLength); for (var i = 0; i < childrenLength; i++) { childArray[i] = arguments[i + 3]; } props.children = childArray; } return { $$typeof: REACT_ELEMENT_TYPE, type: type, key: key === undefined ? null : '' + key, ref: null, props: props, _owner: null }; }; }();
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -163,50 +187,50 @@ var _ref = _jsx('span', {
   className: 'spinner-border spinner-border-sm mr-1'
 });
 
-var _ref2 = _jsx(__WEBPACK_IMPORTED_MODULE_1_components_Header_Loadable__["a" /* default */], {});
+var _ref2 = _jsx(Loadable["a" /* default */], {});
 
-var _ref3 = _jsx(__WEBPACK_IMPORTED_MODULE_3_components_VideoCard_LoadingList_Loadable__["a" /* default */], {});
+var _ref3 = _jsx(LoadingList_Loadable, {});
 
 var _ref4 = _jsx('div', {}, void 0, _jsx('h1', {
   className: 'HomePage-dont-have-job'
 }, void 0, 'Don\'t have any videos - Testing Caching'));
 
 function HomePage() {
-  var _useState = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(true),
+  var _useState = Object(react["useState"])(true),
       _useState2 = _slicedToArray(_useState, 2),
       isLoading = _useState2[0],
       setIsLoading = _useState2[1];
 
-  var _useState3 = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])({}),
+  var _useState3 = Object(react["useState"])({}),
       _useState4 = _slicedToArray(_useState3, 2),
       movieList = _useState4[0],
       setMovieList = _useState4[1];
 
-  var _useState5 = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(false),
+  var _useState5 = Object(react["useState"])(false),
       _useState6 = _slicedToArray(_useState5, 2),
       isSearching = _useState6[0],
       setIsSearching = _useState6[1];
 
-  var _useState7 = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])({}),
+  var _useState7 = Object(react["useState"])({}),
       _useState8 = _slicedToArray(_useState7, 2),
       currentUser = _useState8[0],
       setCurrentUser = _useState8[1];
 
-  var _useState9 = Object(__WEBPACK_IMPORTED_MODULE_0_react__["useState"])(null),
+  var _useState9 = Object(react["useState"])(null),
       _useState10 = _slicedToArray(_useState9, 2),
       currentSearchSelected = _useState10[0],
       setCurrentSearchSelected = _useState10[1];
 
-  Object(__WEBPACK_IMPORTED_MODULE_0_react__["useEffect"])(function () {
+  Object(react["useEffect"])(function () {
     connectToSocket();
-    __WEBPACK_IMPORTED_MODULE_4__api_backend_movies__["a" /* default */].getMovies().then(function (res) {
+    movies["a" /* default */].getMovies().then(function (res) {
       setMovieList(res.data);
       setTimeout(function () {
         return setIsLoading(false);
       }, 1000);
     });
     try {
-      __WEBPACK_IMPORTED_MODULE_5__api_backend_users__["a" /* default */].getUserByAccessToken(__WEBPACK_IMPORTED_MODULE_7__utils_user_UserUtils__["a" /* default */].getAccessToken()).then(function (res) {
+      users["a" /* default */].getUserByAccessToken(UserUtils["a" /* default */].getAccessToken()).then(function (res) {
         return setCurrentUser(res.data);
       });
     } catch (exceptionVar) {
@@ -252,7 +276,7 @@ function HomePage() {
     setIsSearching(true);
     setCurrentSearchSelected(title);
     title = title === 'ALL' ? null : title;
-    __WEBPACK_IMPORTED_MODULE_4__api_backend_movies__["a" /* default */].getMovies(title).then(function (res) {
+    movies["a" /* default */].getMovies(title).then(function (res) {
       setTimeout(function () {
         setIsLoading(false);
         setIsSearching(false);
@@ -266,7 +290,7 @@ function HomePage() {
     return _jsx('div', {
       className: 'SearchBoxContainer'
     }, void 0, titleList.map(function (item, i) {
-      return _jsx(__WEBPACK_IMPORTED_MODULE_6__material_ui_core_Button___default.a, {
+      return _jsx(Button_default.a, {
         onClick: function onClick() {
           return searchMovieByTitle(item);
         },
@@ -286,7 +310,7 @@ function HomePage() {
   }, void 0, movieList.length === 0 ? _ref4 : movieList.map(function (item) {
     return _jsx('div', {
       className: 'col-md-12'
-    }, item.id, _jsx(__WEBPACK_IMPORTED_MODULE_2_components_VideoCard_Item_Loadable__["a" /* default */], {
+    }, item.id, _jsx(Item_Loadable, {
       title: item.title,
       description: item.description,
       sharedByEmail: item.shared_by,

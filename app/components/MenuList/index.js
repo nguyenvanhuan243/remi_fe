@@ -70,13 +70,6 @@ class MenuList extends Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <Menus>
-                      <Link to="/myprofile/change-password" style={{ textDecoration: 'none', display: 'block' }}>
-                        <MenuItem>
-                          <span className="MenuList-text">
-                            Change Password
-                          </span>
-                        </MenuItem>
-                      </Link>
                       <MenuItem onClick={this.handleClose}>
                         <span className="MenuList-text">
                           Logout

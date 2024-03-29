@@ -15,9 +15,6 @@ import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import ShareMoviePage from 'containers/ShareMovie/Loadable';
-import ChangePassword from 'containers/ChangePassword/Loadable';
-import LoadingList from 'components/VideoCard/LoadingList/Loadable';
-import PageTesting from '../../containers/PageTesting/Loadable';
 import { PrivateRoute } from '../../services/authentication';
 
 export default function App() {
@@ -26,10 +23,7 @@ export default function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/test" component={LoadingList} />
           <Route exact path="/home" component={HomePage} />
-          <Route exact path="/page-testing" component={PageTesting} />
-          <Route exact path="/myprofile/change-password" component={ChangePassword} />
           <PrivateRoute exact path="/share" component={ShareMoviePage} />
         </Switch>
       </BrowserRouter>
