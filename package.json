@@ -301,6 +301,7 @@
         "circular-dependency-plugin": "3.0.0",
         "coveralls": "^3.0.1",
         "css-loader": "^3.2.0",
+        "dotenv-webpack": "^8.1.0",
         "enzyme": "2.8.2",
         "eslint-config-airbnb": "15.0.1",
         "eslint-config-airbnb-base": "11.2.0",

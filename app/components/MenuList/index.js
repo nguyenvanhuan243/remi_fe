@@ -33,7 +33,7 @@ class MenuList extends Component {
   handleClose = event => {
     if (event.currentTarget.textContent === 'Logout') {
       UserUtils.removeAccessToken();
-      location.replace(`${config.BASE_URL}`);
+      location.replace("/");
     }
     if (this.anchorEl.contains(event.target)) {
       return;
@@ -70,13 +70,6 @@ class MenuList extends Component {
                 <Paper>
                   <ClickAwayListener onClickAway={this.handleClose}>
                     <Menus>
-                      <Link to="/myprofile/change-password" style={{ textDecoration: 'none', display: 'block' }}>
-                        <MenuItem>
-                          <span className="MenuList-text">
-                            Change Password
-                          </span>
-                        </MenuItem>
-                      </Link>
                       <MenuItem onClick={this.handleClose}>
                         <span className="MenuList-text">
                           Logout

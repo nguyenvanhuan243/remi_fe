@@ -3,15 +3,12 @@ import config from '../../../config';
 
 const MovieAPI = {
 
-  // Get movies
-  getMovies: (title) => {
-    if (title) return axios.get(`${config.API_URL}/movies?title=${title}`);
-    return axios.get(`${config.API_URL}/movies`);
+  getMovies: () => {
+    return axios.get(`${config.API_BASE_URL}/api/v1/movies`);
   },
 
-  // Create movies
   create: (params, accessToken) => {
-    const requestUrl = `${config.API_URL}/movies`;
+    const requestUrl = `${config.API_BASE_URL}/api/v1/movies`;
     const authOptions = {
       headers: {
         Authorization: accessToken,
