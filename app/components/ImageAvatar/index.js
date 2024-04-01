@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
-import { isEmpty } from 'lodash';
-import axios from 'axios';
 import config from '../../../config';
 
 const styles = {
@@ -16,41 +14,20 @@ const styles = {
     height: 40,
   },
 };
-const requestUrl = `${config.API_URL}/users/${localStorage.currentUser}`;
 
 class ImageAvatar extends PureComponent {
   constructor() {
     super();
-    this.state = {
-      user: {},
-    };
-  }
-
-  componentWillMount() {
-    axios.get(requestUrl).then(response => {
-      this.setState({ user: response.data });
-    });
-  }
-
-  getAvatarLink = user => {
-    if (isEmpty(user) || isEmpty(user.url_avatar)) {
-      return config.DEFAULT_AVATAR;
-    }
-    return user.url_avatar;
+    this.state = {};
   }
 
   render() {
-    const {
-      classes,
-    } = this.props;
-    const {
-      user,
-    } = this.state;
+    const { classes } = this.props;
     return (
       <div className={classes.row}>
         <Avatar
           alt="Remy Sharp"
-          src={this.getAvatarLink(user)}
+          src={config.DEFAULT_AVATAR}
           className={classes.avatar}
         />
       </div>
