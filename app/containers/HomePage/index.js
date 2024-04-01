@@ -4,6 +4,7 @@ import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
 import UserAPI from '../../api/backend/users';
+import config from '../../../config';
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
@@ -29,9 +30,7 @@ export default function HomePage() {
     try {
       const token = localStorage.getItem("accessToken")
       console.log("Socket #####", token)
-      // const cable = new WebSocket(`ws://${config.API_BASE_URL}/cable?token=${token}`);
-      // const cable = new WebSocket(`ws://localhost:3001/cable?token=${token}`);
-      const cable = new WebSocket(`${process.env.BACKEND_WEB_SOCKET}?token=${token}`)
+      const cable = new WebSocket(`${config.BACKEND_WEB_SOCKET}?token=${token}`);
       cable.onopen = () => {
         console.log('Connected to Action Cable')
 

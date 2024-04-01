@@ -12,9 +12,9 @@ function getApiBaseUrl() {
 
 function getSocketBaseUrl() {
   if (isProduction()) {
-    return "remitano-backend-api.onrender.com/cable"
+    return "wss://remitano-backend-api.onrender.com/cable"
   }
-  return "localhost:3001/cable"
+  return "ws://localhost:3001/cable"
 }
 
 function getApiUrl() {
