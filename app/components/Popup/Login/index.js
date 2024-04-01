@@ -21,7 +21,7 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
     }
     UserAPI.login(userParams).then(response => {
       UserUtils.setAccessToken(response.data.access_token);
-      window.location.replace(`${config.BASE_URL}`);
+      window.location.replace("/");
     }).catch(() => {
       Swal('Thất Bại', 'Email hay mật khẩu không chính xác', 'warning');
     });
