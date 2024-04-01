@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ForgotPassword from 'components/Popup/ForgotPassword/Loadable';
 import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import { isEmpty } from 'lodash';
@@ -19,7 +18,6 @@ export default class Login extends PureComponent {
     this.state = {
       errorEmail: false,
       errorPassword: false,
-      showForgotPasswordForm: false,
       userInfo: {}
     };
   }
@@ -39,20 +37,6 @@ export default class Login extends PureComponent {
     this.setState({ errorEmail: !validator.isEmail(email) });
     if (isEmpty(password)) this.setState({ errorPassword: true });
     return validator.isEmail(email) && !isEmpty(password);
-  }
-
-  handleForgotPassword() {
-    this.setState({
-      closeForm: true,
-      showForgotPasswordForm: true,
-    });
-  }
-
-  handleCloseForgotPasswordForm() {
-    this.setState({
-      closeForm: true,
-      showForgotPasswordForm: false,
-    });
   }
 
   renderLoginForm() {
