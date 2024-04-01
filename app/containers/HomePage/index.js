@@ -30,7 +30,7 @@ export default function HomePage() {
     try {
       const token = localStorage.getItem("accessToken")
       console.log("Socket #####", token)
-      const cable = new WebSocket(`${config.BACKEND_WEB_SOCKET}?token=${token}`);
+      const cable = new WebSocket(`wss://remitano-backend-api.onrender.com/cable?token=${token}`);
       cable.onopen = () => {
         console.log('Connected to Action Cable')
 
