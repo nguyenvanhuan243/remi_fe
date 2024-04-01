@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import UserUtils from '../utils/user/UserUtils';
 
 const checkAuth = () => {
@@ -9,14 +9,17 @@ const checkAuth = () => {
   return true;
 };
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props => checkAuth() ? <Component {...props} /> : <Redirect to="/" />}
-  />
+const PrivateLink = ({ to, children }) => (
+  checkAuth() ? (
+    <a href={to}>{children}</a>
+  ) : (
+    <Redirect to="/" />
+  )
 );
-PrivateRoute.propTypes = {
-  component: PropTypes.func.isRequired,
+
+PrivateLink.propTypes = {
+  to: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
-export { PrivateRoute };
+export { PrivateLink };
