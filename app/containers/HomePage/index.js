@@ -4,16 +4,13 @@ import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
 import UserAPI from '../../api/backend/users';
-import Button from '@material-ui/core/Button';
 import UserUtils from '../../utils/user/UserUtils';
 import config from "../../../config"
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
   const [movieList, setMovieList] = useState({})
-  const [isSearching, setIsSearching] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
-  const [currentSearchSelected, setCurrentSearchSelected] = useState(null)
 
   useEffect(() => {
     connectToSocket()
@@ -64,51 +61,10 @@ export default function HomePage() {
 
   }
 
-  const searchMovieByTitle = title => {
-    setIsLoading(true)
-    setIsSearching(true)
-    setCurrentSearchSelected(title)
-    title = title === 'ALL' ? null : title
-    MovieAPI.getMovies(title).then(res => {
-      setTimeout(() => {
-        setIsLoading(false)
-        setIsSearching(false)
-      }, 1000);
-      setMovieList(res.data)
-    })
-  }
-
-  const renderSearchButton = () => {
-    const titleList = [
-      'ALL',
-      'Music',
-      'Smart Contract',
-      'Guitar',
-      'Piano',
-      'Game',
-      'Blockchain',
-      'Code',
-      'Trading',
-      'Remitano'
-    ]
-    return (
-      <div className='SearchBoxContainer'>
-        {titleList.map((item, i) => {
-          return (
-            <Button onClick={() => searchMovieByTitle(item)} className='custom-button' variant='contained' color={i % 2 === 0 ? 'success' : 'primary'}>
-              {isSearching && currentSearchSelected === item && <span className="spinner-border spinner-border-sm mr-1"></span>}
-              {item}
-            </Button>)
-        })
-        }
-      </div>)
-  }
-
   return (
     <div className="HomePage">
       <Header />
       <div className="HomePage-container">
-        {renderSearchButton()}
         {isLoading ?
           <LoadingList /> :
           <div className="row">
