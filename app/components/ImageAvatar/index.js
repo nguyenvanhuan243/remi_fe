@@ -27,7 +27,7 @@ class ImageAvatar extends PureComponent {
       <div className={classes.row}>
         <Avatar
           alt="Remy Sharp"
-          src={config.DEFAULT_AVATAR}
+          src='https://i.ibb.co/NWrSrLR/Screen-Shot-2022-08-08-at-21-30-04.png'
           className={classes.avatar}
         />
       </div>

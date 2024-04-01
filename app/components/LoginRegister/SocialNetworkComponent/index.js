@@ -21,7 +21,7 @@ export default class SocialNetworkComponent extends PureComponent { // eslint-di
     }).then(response => {
       this.setState({ success: response === 201 });
       localStorage.setItem('currentUser', response.data.user.id);
-      location.replace(`${config.BASE_URL}`);
+      location.replace("/");
     }).catch(error => {
       alert('Email or Password is wrong');
       this.setState({ danger: error.response.status === 422 });

@@ -33,7 +33,7 @@ class MenuList extends Component {
   handleClose = event => {
     if (event.currentTarget.textContent === 'Logout') {
       UserUtils.removeAccessToken();
-      location.replace(`${config.BASE_URL}`);
+      location.replace("/");
     }
     if (this.anchorEl.contains(event.target)) {
       return;
