@@ -50,7 +50,7 @@ export default class Header extends PureComponent {
   dispatch = action => this.setState(reducer(this.state, action));
 
   shareMovie = () => {
-    if (UserUtils.getAccessToken()) return location.replace(`${location.origin}/share`);
+    if (UserUtils.getAccessToken()) return location.replace("/share");
     Swal({
       title: 'You not login',
       text: 'You need to login to share movie',
