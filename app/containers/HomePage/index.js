@@ -37,8 +37,7 @@ export default function HomePage() {
         const subscribeMessage = {
           command: 'subscribe',
           identifier: JSON.stringify({
-            channel: 'MoviesChannel',
-            id: '65b75b213dd35e4374430423'
+            channel: 'MoviesChannel'
           }),
         };
 
@@ -49,7 +48,7 @@ export default function HomePage() {
         const data = JSON.parse(event.data);
         console.log("#####", data["message"])
         if (data && data["message"] && data["message"]["title"]) {
-          alert(data["message"]["title"])
+          alert(`${data["message"]["user"]} shared: ${data["message"]["title"]}`)
         };
       }
     } catch (exceptionVar) {
