@@ -4,8 +4,6 @@ import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
 import UserAPI from '../../api/backend/users';
-import UserUtils from '../../utils/user/UserUtils';
-import config from "../../../config"
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
@@ -65,6 +63,8 @@ export default function HomePage() {
     <div className="HomePage">
       <Header />
       <div className="HomePage-container">
+        <div className='SearchBoxContainer'>
+        </div>
         {isLoading ?
           <LoadingList /> :
           <div className="row">
