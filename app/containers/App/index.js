@@ -20,11 +20,13 @@ import { PrivateRoute } from '../../services/authentication';
 export default function App() {
   return (
     <React.Fragment>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/home" component={HomePage} />
-        <PrivateRoute exact path="/share" component={ShareMoviePage} />
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/home" component={HomePage} />
+          <PrivateRoute exact path="/share" component={ShareMoviePage} />
+        </Switch>
+      </BrowserRouter>
     </React.Fragment>
   );
 }
