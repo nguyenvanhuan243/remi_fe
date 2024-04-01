@@ -6,7 +6,6 @@ import Swal from 'sweetalert2/dist/sweetalert2';
 import 'sweetalert2/src/sweetalert2.scss';
 import CloseIcon from 'components/Icons/CloseIcon/Loadable';
 import classNames from 'classnames';
-import config from '../../../../config';
 import UserUtils from '../../../utils/user/UserUtils';
 import UserAPI from '../../../api/backend/users';
 
@@ -22,8 +21,8 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
     UserAPI.login(userParams).then(response => {
       UserUtils.setAccessToken(response.data.access_token);
       window.location.replace("/");
-    }).catch(() => {
-      Swal('Thất Bại', 'Email hay mật khẩu không chính xác', 'warning');
+    }).catch((err) => {
+      Swal('Fail', err.response.data.error, 'warning');
     });
   }
 
