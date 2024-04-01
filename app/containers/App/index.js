@@ -12,7 +12,7 @@
  */
 
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, HashRouter } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import ShareMoviePage from 'containers/ShareMovie/Loadable';
 import { PrivateRoute } from '../../services/authentication';
@@ -20,13 +20,11 @@ import { PrivateRoute } from '../../services/authentication';
 export default function App() {
   return (
     <React.Fragment>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/home" component={HomePage} />
-          <PrivateRoute exact path="/share" component={ShareMoviePage} />
-        </Switch>
-      </BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/home" component={HomePage} />
+        <PrivateRoute exact path="/share" component={ShareMoviePage} />
+      </Switch>
     </React.Fragment>
   );
 }
