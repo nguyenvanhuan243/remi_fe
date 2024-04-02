@@ -2,7 +2,7 @@ version: '3'
 
 services:
   frontend:
-    container_name: frontend-react-container
+    container_name: remi-frontend
     build:
       context: .
       dockerfile: Dockerfile
