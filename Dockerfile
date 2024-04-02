@@ -1,5 +1,5 @@
 # Use the official Node.js 14 image as base
-FROM node:8.15.1
+FROM node:14
 
 # Set the working directory in the container
 WORKDIR /usr/src/app
@@ -8,9 +8,9 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install node-sass --save && \
-    npm install && \
-    npm run build:dll
+RUN npm -g uninstall node-sass && \
+    npm install node-sass@4.14.1 && \
+    npm install
 # Copy the rest of the application code to the working directory
 COPY . .
 
