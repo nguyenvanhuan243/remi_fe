@@ -1,0 +1,29 @@
+{
+  "name": "react-onscroll",
+  "version": "0.0.0",
+  "description": "ScrollEvent",
+  "main": "dist/react-onscroll.min.js",
+  "homepage": "https://github.com/focuswish/react-onscroll",
+  "authors": [
+    "Ben Gardner"
+  ],
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "react",
+    "react-component"
+  ],
+  "license": "MIT",
+  "ignore": [
+    ".editorconfig",
+    ".gitignore",
+    "package.json",
+    "src",
+    "node_modules",
+    "example",
+    "test"
+  ]
+}
