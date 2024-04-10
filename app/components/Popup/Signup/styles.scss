@@ -2,10 +2,13 @@
   height: 1157px;
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
-  display: block;
+  display: none;
   z-index: 1;
   width: 100%;
   margin-left: -120px;
+  &-showPopup {
+    display: block !important;
+  }
 }
 
 .Signup-container {

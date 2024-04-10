@@ -67,7 +67,10 @@ export default class Header extends PureComponent {
     return (
       <React.Fragment>
         <LoginForm showPopup={showLoginForm} closeLoginForm={() => this.dispatch({ type: 'CLOSE_LOGIN' })} />
-        { showSignupForm && <SignupForm closeSignupForm={() => this.dispatch({ type: 'CLOSE_SIGNUP' })} /> }
+        <SignupForm
+          showPopup={show}
+          closeSignupForm={() => this.dispatch({ type: 'CLOSE_SIGNUP' })}
+        />
         <div className="Header">
           <div className="Header-container">
             <div className="col-lg-2 Header-logoContainer">
