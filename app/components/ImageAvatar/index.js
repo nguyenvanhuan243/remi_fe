@@ -29,7 +29,7 @@ const ImageAvatar = (props) => {
 };
 
 ImageAvatar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object
 };
 
 export default ImageAvatar;

@@ -80,6 +80,7 @@ export default function HomePage() {
                     embedUrl={item.embed_url}
                     movieID={item.id}
                     currentUser={currentUser}
+                    likedUserIds={item.liked_user_ids}
                   />
                 </div>))
             }
