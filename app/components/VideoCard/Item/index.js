@@ -40,6 +40,9 @@ const VideoCard = ({
   };
 
   const renderButtonLike = (movieID) => {
+    if (!UserUtils.getAccessToken()) {
+      return null
+    }
     if (!checkUserLikedMovie(movieID)) {
       return (
         <Button variant="contained" color="secondary" onClick={() => handleLikeMovie(movieID)}>
