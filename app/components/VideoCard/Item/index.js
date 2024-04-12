@@ -30,10 +30,14 @@ const VideoCard = ({
       .then(res => {
         if (res.status === 201) {
           setLiked(true);
-          alert("Liked");
+          alert("Liked successfully!!!");
+          window.location.reload()
         }
       })
-      .catch(e => console.log("error", e));
+      .catch(e => {
+        alert("You liked this movie");
+        console.log("error", e)
+      });
   };
 
   const checkUserLikedMovie = (movieID) => {
