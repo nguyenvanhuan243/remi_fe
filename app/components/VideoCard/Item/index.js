@@ -6,6 +6,7 @@ import MovieAPI from '../../../api/backend/movies';
 import UserUtils from '../../../utils/user/UserUtils';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import { Button } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { faListAlt, faHeading, faMoneyBillAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
 
 library.add(faListAlt, faHeading, faMoneyBillAlt, faBuilding);
@@ -16,6 +17,7 @@ const VideoCard = ({
   description,
   sharedByEmail,
   movieID,
+  likedUserIds
 }) => {
   const [liked, setLiked] = useState(false);
 
@@ -46,8 +48,10 @@ const VideoCard = ({
     if (!checkUserLikedMovie(movieID)) {
       return (
         <Button variant="contained" color="secondary" onClick={() => handleLikeMovie(movieID)}>
+          <Typography style={{ marginRight: "10px"}} variant="h6" color="white">
+            {likedUserIds.length}
+          </Typography>
           <ThumbUpIcon>
-            Like
           </ThumbUpIcon>
         </Button>
       );
