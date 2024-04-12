@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import MovieAPI from '../../../api/backend/movies';
+import UserUtils from '../../../utils/user/UserUtils';
 import { faListAlt, faHeading, faMoneyBillAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
 library.add(faListAlt, faHeading, faMoneyBillAlt, faBuilding);
 
@@ -12,13 +14,50 @@ export default class VideoCard extends PureComponent {
     this.state = {};
   }
 
+  handleLikeMovie = (movieID) => {
+    const params = {
+      movie_id: movieID,
+      reaction_type: 0
+    }
+    MovieAPI.likeMovie(params, UserUtils.getAccessToken()).then(res => {
+      if (res.status === 201) {
+        alert("Liked")
+      };
+    }).catch(e => console.log("error"));
+  }
+
+  checkUserLikedMovie = (movieID) => {
+    return false
+  }
+
+  renderButtonLike = () => {
+    if (!this.checkUserLikedMovie()) {
+      return(
+        <button onClick={
+          () => this.handleLikeMovie(movieID)
+        }>
+          Like
+        </button>
+      )
+    }
+    return(
+      <button onClick={
+        () => this.handleLikeMovie(movieID)
+      }>
+        Liked
+      </button>
+    )
+  }
+
   render() {
     const {
       title,
       embedUrl,
       description,
-      sharedByEmail
+      sharedByEmail,
+      movieID
     } = this.props;
+    console.log("$$$$3#####", this.props)
 
     return (
       <div className="VideoCard">
@@ -31,6 +70,13 @@ export default class VideoCard extends PureComponent {
               <span className="VideoCard-title">{title}</span>
             </CardTitle>
             <CardTitle><span>{`Shared by: ${sharedByEmail}`}</span></CardTitle>
+            {
+              <button onClick={
+                () => this.handleLikeMovie(movieID)
+              }>
+                Like
+              </button>
+            }
             <CardTitle>Description: <br /><span>{description}</span></CardTitle>
           </CardBody>
         </Card>
