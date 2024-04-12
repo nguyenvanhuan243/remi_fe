@@ -15,7 +15,16 @@ const MovieAPI = {
       },
     };
     return axios.post(requestUrl, params, authOptions);
-  }
+  },
+  likeMovie: (params, accessToken) => {
+    const requestUrl = `${config.API_BASE_URL}/api/v1/reactions`;
+    const authOptions = {
+      headers: {
+        Authorization: accessToken,
+      },
+    };
+    return axios.post(requestUrl, params, authOptions);
+  },
 };
 
 export default MovieAPI;
