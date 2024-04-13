@@ -1,122 +1,81 @@
-import React, { PureComponent } from 'react';
-import MenuList from 'components/MenuList/Loadable';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import LoginForm from 'components/Popup/Login/Loadable';
 import SignupForm from 'components/Popup/Signup/Loadable';
-import Swal from 'sweetalert2/dist/sweetalert2';
-import 'sweetalert2/src/sweetalert2.scss';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faUser,
-  faListAlt,
-  faSignInAlt,
-  faArrowAltCircleUp,
-  faHome,
-} from '@fortawesome/free-solid-svg-icons';
+import { faListAlt, faSignInAlt, faArrowAltCircleUp, faHome } from '@fortawesome/free-solid-svg-icons';
+import MenuList from 'components/MenuList/Loadable';
 import UserUtils from '../../utils/user/UserUtils';
-import UserAPI from '../../api/backend/users'; 
 
-library.add(faUser, faListAlt, faSignInAlt, faArrowAltCircleUp, faHome);
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'CLOSE_LOGIN':
-      return { showLoginForm: false };
-    case 'CLOSE_SIGNUP':
-      return { showSignupForm: false };
-    case 'TOGGLE_SIGNUP':
-      return { showSignupForm: true };
-    case 'TOGGLE_SIGNIN':
-      return { showLoginForm: true };
-    default:
-      return state;
-  }
-};
-export default class Header extends PureComponent {
-  constructor() {
-    super();
-    this.state = {
-      user: {},
-      showLoginForm: false,
-      showSignupForm: false,
-    };
-  }
+const Header = () => {
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
 
-  componentWillMount() {
-    UserAPI.getUserByAccessToken(UserUtils.getAccessToken()).then(res => this.setState({ user: res.data }))
-  }
+  useEffect(() => {}, []);
 
-  dispatch = action => this.setState(reducer(this.state, action));
-
-  shareMovie = () => {
-    if (UserUtils.getAccessToken()) return location.replace("/share");
-    Swal({
-      title: 'You not login',
-      text: 'You need to login to share movie',
-      type: 'warning',
+  const shareMovie = () => {
+    if (UserUtils.getAccessToken()) return window.location.replace("/share");
+    Swal.fire({
+      title: 'You are not logged in',
+      text: 'You need to login to share a movie',
+      icon: 'warning',
       showCancelButton: false,
       confirmButtonText: 'Login',
     }).then(result => {
-      if (result.value) this.setState({ showLoginForm: true });
+      if (result.value) setShowLoginForm(true);
     });
-  }
+  };
 
-  render() {
-    const { user, showLoginForm, showSignupForm } = this.state;
-    return (
-      <React.Fragment>
-        <LoginForm showPopup={showLoginForm} closeLoginForm={() => this.dispatch({ type: 'CLOSE_LOGIN' })} />
-        <SignupForm
-          showPopup={showSignupForm}
-          closeSignupForm={() => this.dispatch({ type: 'CLOSE_SIGNUP' })}
-        />
-        <div className="Header">
-          <div className="Header-container">
-            <div className="col-lg-2 Header-logoContainer">
-              <Link to={'/'} className="Header-homePage">
-                <span>
-                  <FontAwesomeIcon icon="home" />
+  const userInfo = UserUtils.getCurrentUser()
+
+  return (
+    <Fragment>
+      <LoginForm showPopup={showLoginForm} closeLoginForm={() => setShowLoginForm(false)} />
+      <SignupForm showPopup={showSignupForm} closeSignupForm={() => setShowSignupForm(false)} />
+      <div className="Header">
+        <div className="Header-container">
+          <div className="col-lg-2 Header-logoContainer">
+            <Link to={'/'} className="Header-homePage">
+              <span>
+                <FontAwesomeIcon icon={faHome} />
+              </span>
+              <span className="Header-homeText">
+                FunnyMovies
+              </span>
+            </Link>
+          </div>
+          <div className='Header-postJobContainer col-lg-10 justify-content-end'>
+            {userInfo && (
+              <Button disabled onClick={shareMovie} className="Header-postJob">
+                <span className="Header-text">
+                  {`Welcome ${userInfo.email}`}
                 </span>
-                <span className="Header-homeText">
-                  FunnyMovies
-                </span>
-              </Link>
-            </div>
-            <div className='Header-postJobContainer col-lg-10 justify-content-end'>
-              {
-                user.email && <Button disabled onClick={() => this.shareMovie()} className="Header-postJob">
-                  <span className="Header-text">
-                    { `Welcome ${user.email}` }
-                  </span>
-                </Button>
-              }
-              <Button onClick={() => this.shareMovie()} className="Header-postJob">
-                <FontAwesomeIcon style={{ color: '#FFF' }} icon="list-alt" />
-                <span className="Header-text">{ 'Share a movie' }</span>
               </Button>
-              { !UserUtils.getAccessToken() &&
-                <Button
-                  className="Header-postJob"
-                  onClick={() => this.dispatch({ type: 'TOGGLE_SIGNIN' })}
-                >
-                  <FontAwesomeIcon style={{ color: '#FFF' }} icon="sign-in-alt" />
-                  <span className="Header-text">Login</span>
-                </Button>
-              }
-              {
-                !UserUtils.getAccessToken() &&
-                  <Button className="Header-postJob" onClick={() => this.dispatch({ type: 'TOGGLE_SIGNUP' })}>
-                    <FontAwesomeIcon style={{ color: '#FFF' }} icon="sign-in-alt" />
-                    <span className="Header-text">Register</span>
-                  </Button>
-              }
-              { UserUtils.getAccessToken() && user && <MenuList /> }
-            </div>
+            )}
+            <Button onClick={shareMovie} className="Header-postJob">
+              <FontAwesomeIcon style={{ color: '#FFF' }} icon={faListAlt} />
+              <span className="Header-text">{'Share a movie'}</span>
+            </Button>
+            {!UserUtils.getAccessToken() && (
+              <Button className="Header-postJob" onClick={() => setShowLoginForm(true)}>
+                <FontAwesomeIcon style={{ color: '#FFF' }} icon={faSignInAlt} />
+                <span className="Header-text">Login</span>
+              </Button>
+            )}
+            {!UserUtils.getAccessToken() && (
+              <Button className="Header-postJob" onClick={() => setShowSignupForm(true)}>
+                <FontAwesomeIcon style={{ color: '#FFF' }} icon={faArrowAltCircleUp} />
+                <span className="Header-text">Register</span>
+              </Button>
+            )}
+            {UserUtils.getAccessToken() && <MenuList />}
           </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
-Header.propTypes = {};
+      </div>
+    </Fragment>
+  );
+};
+
+export default Header;
