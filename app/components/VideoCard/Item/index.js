@@ -5,6 +5,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import MovieAPI from '../../../api/backend/movies';
 import UserUtils from '../../../utils/user/UserUtils';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import { faListAlt, faHeading, faMoneyBillAlt, faBuilding } from '@fortawesome/free-solid-svg-icons';
@@ -67,6 +68,23 @@ const VideoCard = ({
     }
   };
 
+  const donateUsdtForVideoOwner = () => {
+    return alert("Your usdt is not enought !!!")
+  }
+
+  const renderDonateButton = () => {
+    return (
+      <Button onClick={
+        () => donateUsdtForVideoOwner()
+      } style={{ marginLeft: "10px" }} variant="contained" color="secondary">
+        <Typography style={{ marginRight: "10px" }} variant="h6" color="white">
+          Donate
+        </Typography>
+        <FavoriteIcon />
+      </Button>
+    )
+  }
+
   return (
     <div className="VideoCard">
       <Card className="VideoCard-container">
@@ -79,6 +97,9 @@ const VideoCard = ({
           </CardTitle>
           <CardTitle><span>{`Shared by: ${sharedByEmail}`}</span></CardTitle>
           {renderButtonLike(movieID)}
+          {
+            renderDonateButton()
+          }
           <CardTitle>Description: <br /><span>{description}</span></CardTitle>
         </CardBody>
       </Card>
