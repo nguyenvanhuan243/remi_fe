@@ -10,15 +10,10 @@ import UserUtils from '../../../utils/user/UserUtils';
 import UserAPI from '../../../api/backend/users';
 
 const Login = ({ showPopup = false, closeLoginForm }) => {
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
+  const [userInfo, setUserInfo] = useState({})
 
   const onLogin = () => {
-    const userParams = {
-      email: userEmail,
-      password: userPassword
-    }
-    UserAPI.login(userParams).then(response => {
+    UserAPI.login(userInfo).then(response => {
       const accessToken = response.data.access_token
       UserUtils.setAccessToken(accessToken);
       UserAPI.getUserByAccessToken(accessToken).then(response => {
@@ -51,7 +46,7 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
                   margin="normal"
                   variant="outlined"
                   className="Login-emailField"
-                  onChange={(e) => setUserEmail(e.target.value)}
+                  onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
                 />
               </div>
               <div>
@@ -62,7 +57,7 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
                   margin="normal"
                   variant="outlined"
                   className="Login-passwordField"
-                  onChange={(e) => setUserPassword(e.target.value)}
+                  onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
                 />
               </div>
               <div>
