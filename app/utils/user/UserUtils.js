@@ -13,12 +13,12 @@ const UserUtils = {
   },
 
   setCurrentUser(data) {
-    return localStorage.setItem("currentUser", JSON.stringify(data))
+    return localStorage.setItem('currentUser', JSON.stringify(data))
   },
 
   getCurrentUser() {
     return JSON.parse(
-      localStorage.getItem("currentUser")
+      localStorage.getItem('currentUser')
     )
   },
 
