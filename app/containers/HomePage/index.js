@@ -4,6 +4,7 @@ import Footer from 'components/Footer';
 import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
+import UserUtils from '../../../utils/user/UserUtils';
 import config from '../../../config';
 
 export default function HomePage() {
@@ -49,9 +50,7 @@ export default function HomePage() {
 
   const connectToSocket = () => {
     try {
-      const token = localStorage.getItem("accessToken")
-      console.log("Socket #####", token)
-      const cable = new WebSocket(`${config.SOCKET_BASE_URL}?token=${token}`);
+      const cable = new WebSocket(`${config.SOCKET_BASE_URL}?token=${UserUtils.getAccessToken()}`);
       cable.onopen = () => {
         console.log('Connected to Action Cable')
 
