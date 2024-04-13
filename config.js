@@ -1,10 +1,10 @@
 // Start backend
 function getApiBaseUrl() {
-  return process.env.API_BASE_URL || "https://remitano-backend-api.onrender.com"
+  return process.env.API_BASE_URL || "https://remi-api.onrender.com"
 }
 
 function getSocketBaseUrl() {
-  return process.env.SOCKET_BASE_URL || "wss://remitano-backend-api.onrender.com/cable"
+  return process.env.SOCKET_BASE_URL || "wss://remi-api.onrender.com/cable"
 }
 
 const config = {
