@@ -4,7 +4,7 @@ import Footer from 'components/Footer';
 import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
-import UserUtils from '../../../utils/user/UserUtils';
+import UserUtils from '../../utils/user/UserUtils';
 import config from '../../../config';
 
 export default function HomePage() {
