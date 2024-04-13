@@ -15,11 +15,6 @@ const Header = () => {
 
   useEffect(() => {}, []);
 
-  const handleShowLoginForm = () => setShowLoginForm(true);
-  const handleShowSignupForm = () => setShowSignupForm(true);
-  const handleCloseLoginForm = () => setShowLoginForm(false);
-  const handleCloseSignupForm = () => setShowSignupForm(false);
-
   const shareMovie = () => {
     if (UserUtils.getAccessToken()) return window.location.replace("/share");
     Swal.fire({
@@ -37,8 +32,8 @@ const Header = () => {
 
   return (
     <Fragment>
-      <LoginForm showPopup={showLoginForm} closeLoginForm={handleCloseLoginForm} />
-      <SignupForm showPopup={showSignupForm} closeSignupForm={handleCloseSignupForm} />
+      <LoginForm showPopup={showLoginForm} closeLoginForm={() => setShowLoginForm(false)} />
+      <SignupForm showPopup={showSignupForm} closeSignupForm={() => setShowSignupForm(false)} />
       <div className="Header">
         <div className="Header-container">
           <div className="col-lg-2 Header-logoContainer">
@@ -64,13 +59,13 @@ const Header = () => {
               <span className="Header-text">{'Share a movie'}</span>
             </Button>
             {!UserUtils.getAccessToken() && (
-              <Button className="Header-postJob" onClick={handleShowLoginForm}>
+              <Button className="Header-postJob" onClick={() => setShowLoginForm(true)}>
                 <FontAwesomeIcon style={{ color: '#FFF' }} icon={faSignInAlt} />
                 <span className="Header-text">Login</span>
               </Button>
             )}
             {!UserUtils.getAccessToken() && (
-              <Button className="Header-postJob" onClick={handleShowSignupForm}>
+              <Button className="Header-postJob" onClick={() => setShowSignupForm(true)}>
                 <FontAwesomeIcon style={{ color: '#FFF' }} icon={faArrowAltCircleUp} />
                 <span className="Header-text">Register</span>
               </Button>
