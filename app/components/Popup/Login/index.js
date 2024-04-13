@@ -19,7 +19,11 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
       password: userPassword
     }
     UserAPI.login(userParams).then(response => {
-      UserUtils.setAccessToken(response.data.access_token);
+      const accessToken = response.data.access_token
+      UserUtils.setAccessToken(accessToken);
+      UserAPI.getUserByAccessToken(accessToken).then(response => {
+        UserUtils.setCurrentUser(response.data)
+      })
       window.location.replace("/");
     }).catch((err) => {
       Swal('Fail', err.response.data.error, 'warning');

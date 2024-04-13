@@ -9,8 +9,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 import ImageAvatar from 'components/ImageAvatar/Loadable';
-import { Link } from 'react-router-dom';
-import config from '../../../config';
 import UserUtils from '../../utils/user/UserUtils';
 
 const useStyles = makeStyles((theme) => ({
@@ -34,6 +32,7 @@ const MenuListComponent = (props) => {
   const handleClose = (event) => {
     if (event.currentTarget.textContent === 'Logout') {
       UserUtils.removeAccessToken();
+      UserUtils.removeCurrentUser()
       window.location.replace('/');
     }
 

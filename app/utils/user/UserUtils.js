@@ -12,6 +12,18 @@ const UserUtils = {
     return localStorage.removeItem('accessToken');
   },
 
+  setCurrentUser(data) {
+    return localStorage.setItem("currentUser", JSON.stringify(data))
+  },
+
+  getCurrentUser() {
+    return localStorage.getItem("currentUser")
+  },
+
+  removeCurrentUser() {
+    return removeItem.removeItem('currentUser');
+  }
+
 };
 
 export default UserUtils;
