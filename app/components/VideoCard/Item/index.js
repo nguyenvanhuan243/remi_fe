@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardBody, CardTitle } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -19,8 +19,6 @@ const VideoCard = ({
   movieID,
   likedUserIds
 }) => {
-  const [liked, setLiked] = useState(false);
-
   const handleLikeMovie = (movieID) => {
     const params = {
       movie_id: movieID,
@@ -29,7 +27,6 @@ const VideoCard = ({
     MovieAPI.likeMovie(params, UserUtils.getAccessToken())
       .then(res => {
         if (res.status === 201) {
-          setLiked(true);
           alert("Liked successfully!!!");
           window.location.reload()
         }
@@ -40,19 +37,17 @@ const VideoCard = ({
       });
   };
 
-  const checkUserLikedMovie = (movieID) => {
-    // Your logic to check if the user liked the movie
-    return false;
+  const checkUserLikedMovie = () => {
+    const currentUserInfo = UserUtils.getCurrentUser()
+    const currentUserID = currentUserInfo && currentUserInfo.id
+    return likedUserIds.includes(parseInt(currentUserID))
   };
 
   const renderButtonLike = (movieID) => {
-    if (!UserUtils.getAccessToken()) {
-      return null
-    }
-    if (!checkUserLikedMovie(movieID)) {
+    if (UserUtils.getAccessToken() && !checkUserLikedMovie()) {
       return (
         <Button variant="contained" color="secondary" onClick={() => handleLikeMovie(movieID)}>
-          <Typography style={{ marginRight: "10px"}} variant="h6" color="white">
+          <Typography style={{ marginRight: "10px" }} variant="h6" color="white">
             {likedUserIds.length}
           </Typography>
           <ThumbUpIcon>
@@ -61,9 +56,11 @@ const VideoCard = ({
       );
     } else {
       return (
-        <Button variant="contained" color="secondary" onClick={() => handleLikeMovie(movieID)}>
+        <Button disabled variant="contained" color="secondary">
+          <Typography style={{ marginRight: "10px" }} variant="h6" color="white">
+            {likedUserIds.length}
+          </Typography>
           <ThumbUpIcon>
-            Liked
           </ThumbUpIcon>
         </Button>
       );

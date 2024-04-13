@@ -18,8 +18,8 @@ const Login = ({ showPopup = false, closeLoginForm }) => {
       UserUtils.setAccessToken(accessToken);
       UserAPI.getUserByAccessToken(accessToken).then(response => {
         UserUtils.setCurrentUser(response.data)
+        window.location.replace("/");
       })
-      window.location.replace("/");
     }).catch((err) => {
       Swal('Fail', err.response.data.error, 'warning');
     });
