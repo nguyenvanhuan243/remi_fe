@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from 'components/Header/Loadable';
+import Footer from 'components/Footer';
 import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
@@ -87,6 +88,7 @@ export default function HomePage() {
           </div>
         }
       </div>
+      <Footer />
     </div>
   );
 }
