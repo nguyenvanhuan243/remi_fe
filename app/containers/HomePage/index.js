@@ -4,28 +4,48 @@ import Footer from 'components/Footer';
 import VideoCard from 'components/VideoCard/Item/Loadable';
 import LoadingList from 'components/VideoCard/LoadingList/Loadable';
 import MovieAPI from '../../api/backend/movies';
-import UserAPI from '../../api/backend/users';
 import config from '../../../config';
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true)
   const [movieList, setMovieList] = useState({})
-  const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
     connectToSocket()
     MovieAPI.getMovies().then(
       res => {
         setMovieList(res.data)
-        setTimeout(() => setIsLoading(false), 1000);
+        setTimeout(() => setIsLoading(false), 500);
       }
     );
-    try {
-      UserAPI.getUserByAccessToken(UserUtils.getAccessToken()).then(res => setCurrentUser(res.data))
-    } catch (exceptionVar) {
-      console.log("connect socket error")
-    }
   }, [])
+
+  const renderMovies = () => {
+    if (isLoading) {
+      return <LoadingList />
+    }
+    return (
+      <div className="row">
+        {
+          movieList.length === 0 ? <div>
+            <h1 className="HomePage-dont-have-job">
+              Don't have any videos
+                </h1>
+          </div> : movieList.map(item => (
+            <div key={item.id} className="col-md-12">
+              <VideoCard
+                title={item.title}
+                description={item.description}
+                sharedByEmail={item.shared_by}
+                embedUrl={item.embed_url}
+                movieID={item.id}
+                likedUserIds={item.liked_user_ids}
+              />
+            </div>))
+        }
+      </div>
+    )
+  }
 
   const connectToSocket = () => {
     try {
@@ -64,28 +84,8 @@ export default function HomePage() {
       <div className="HomePage-container">
         <div className='SearchBoxContainer'>
         </div>
-        {isLoading ?
-          <LoadingList /> :
-          <div className="row">
-            {
-              movieList.length === 0 ? <div>
-                <h1 className="HomePage-dont-have-job">
-                  Don't have any videos
-                </h1>
-              </div> : movieList.map(item => (
-                <div key={item.id} className="col-md-12">
-                  <VideoCard
-                    title={item.title}
-                    description={item.description}
-                    sharedByEmail={item.shared_by}
-                    embedUrl={item.embed_url}
-                    movieID={item.id}
-                    currentUser={currentUser}
-                    likedUserIds={item.liked_user_ids}
-                  />
-                </div>))
-            }
-          </div>
+        {
+          renderMovies()
         }
       </div>
       <Footer />
