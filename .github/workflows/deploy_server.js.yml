@@ -51,5 +51,4 @@ jobs:
       - name: Deploy to Render Server (Master)
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: |
-          curl -X GET https://api.render.com/deploy/srv-co56ptkf7o1s739ab000?key=FBM5n-MMv5M
-          curl -X GET https://api.render.com/deploy/srv-co6f480l6cac73a7uii0?key=KFJgS6f3WC0
+          curl -X GET https://api.render.com/deploy/srv-cod15da0si5c738nra3g?key=eGtlwOezsDI
