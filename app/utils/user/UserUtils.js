@@ -17,11 +17,13 @@ const UserUtils = {
   },
 
   getCurrentUser() {
-    return localStorage.getItem("currentUser")
+    return JSON.parse(
+      localStorage.getItem("currentUser")
+    )
   },
 
   removeCurrentUser() {
-    return removeItem.removeItem('currentUser');
+    return localStorage.removeItem('currentUser');
   }
 
 };

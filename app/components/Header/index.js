@@ -10,7 +10,6 @@ import MenuList from 'components/MenuList/Loadable';
 import UserUtils from '../../utils/user/UserUtils';
 
 const Header = () => {
-  const [user, setUser] = useState({});
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [showSignupForm, setShowSignupForm] = useState(false);
 
@@ -34,6 +33,8 @@ const Header = () => {
     });
   };
 
+  const userInfo = UserUtils.getCurrentUser()
+
   return (
     <Fragment>
       <LoginForm showPopup={showLoginForm} closeLoginForm={handleCloseLoginForm} />
@@ -51,10 +52,10 @@ const Header = () => {
             </Link>
           </div>
           <div className='Header-postJobContainer col-lg-10 justify-content-end'>
-            {user.email && (
+            {userInfo && (
               <Button disabled onClick={shareMovie} className="Header-postJob">
                 <span className="Header-text">
-                  {`Welcome ${user.email}`}
+                  {`Welcome ${userInfo.email}`}
                 </span>
               </Button>
             )}
