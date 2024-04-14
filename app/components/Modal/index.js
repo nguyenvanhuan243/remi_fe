@@ -5,7 +5,7 @@ const Modal = ({ isOpen, setIsOpen, title, html }) => {
 		<div
 			className={
 				isOpen
-					? 'fixed inset-1 z-10 overflow-y-auto scrollbar-hide'
+					? 'fixed inset-1 z-10 overflow-y-auto scrollbar-hide custom-modal'
 					: 'hidden'
 			}
 		>
