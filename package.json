@@ -258,6 +258,7 @@
         "react-number-format": "^4.0.4",
         "react-onscroll": "^1.0.4",
         "react-particles-js": "^2.6.0",
+        "react-qr-code": "^2.0.12",
         "react-redux": "5.0.5",
         "react-ripples": "^1.1.2",
         "react-router-dom": "^4.1.1",
