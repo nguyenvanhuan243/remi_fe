@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 import Header from 'components/Header/Loadable';
-import Button from '@material-ui/core/Button';
 import Modal from 'components/Modal/Loadable';
 import Swal from 'sweetalert2';
 import TextField from '@material-ui/core/TextField';
-import MovieAPI from '../../api/backend/movies';
-import UserUtils from '../../utils/user/UserUtils';
 import QRCode from "react-qr-code";
 
 export default function WalletPage() {
-  const [movieUrl, setMovieUrl] = useState("");
   const [depositModalOpen, setDepositModalOpen] = useState(false);
 
   const copyAccountAddress = () => {
@@ -28,20 +24,6 @@ export default function WalletPage() {
 
   const handleDeposit = () => {
     setDepositModalOpen(true);
-  };
-
-  const handleDepositSubmit = (e) => {
-    e.preventDefault();
-    const params = { url: movieUrl };
-    MovieAPI.create(params, UserUtils.getAccessToken())
-      .then(res => {
-        if (res.status === 201) {
-          Swal.fire('Success', res.statusText, 'success');
-        }
-      })
-      .catch(e => {
-        Swal.fire('Warning', e.response.statusText, 'warning');
-      });
   };
 
   const DepositContent = () => {
