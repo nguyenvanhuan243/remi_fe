@@ -28,6 +28,10 @@ const Header = () => {
     });
   };
 
+  const accessWallet = () => {
+    return window.location.replace("/wallet");
+  };
+
   const userInfo = UserUtils.getCurrentUser()
 
   return (
@@ -58,6 +62,12 @@ const Header = () => {
               <FontAwesomeIcon style={{ color: '#FFF' }} icon={faListAlt} />
               <span className="Header-text">{'Share a movie'}</span>
             </Button>
+            {
+              UserUtils.getAccessToken() && <Button onClick={accessWallet} className="Header-postJob">
+                <FontAwesomeIcon style={{ color: '#FFF' }} icon={faListAlt} />
+                <span className="Header-text">{'Wallet'}</span>
+              </Button>
+            }
             {!UserUtils.getAccessToken() && (
               <Button className="Header-postJob" onClick={() => setShowLoginForm(true)}>
                 <FontAwesomeIcon style={{ color: '#FFF' }} icon={faSignInAlt} />
