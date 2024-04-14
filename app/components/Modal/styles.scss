@@ -15796,7 +15796,8 @@ a.day-mode {
 }
 
 .justify-center {
-    justify-content: center
+    justify-content: center;
+    z-index: 100 !important;
 }
 
 .justify-between {
@@ -53992,4 +53993,10 @@ a.day-mode {
     height: 12px;
     margin: 0 8px;
     // background-color: var(--app--color--blue-grey-dark);
+}
+
+.custom-modal {
+    margin: 0 auto !important;
+    z-index: 1000;
+    margin: 10px !important;
 }
