@@ -15,6 +15,7 @@ import React from 'react';
 import { Switch, Route, BrowserRouter, HashRouter } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import ShareMoviePage from 'containers/ShareMovie/Loadable';
+import WalletPage from 'containers/WalletPage/Loadable';
 import { PrivateRoute } from '../../services/authentication';
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/home" component={HomePage} />
           <PrivateRoute exact path="/share" component={ShareMoviePage} />
+          <PrivateRoute exact path="/wallet" component={WalletPage} />
         </Switch>
       </BrowserRouter>
     </React.Fragment>
